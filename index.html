@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JSONify — Transform & Edit JSON Instantly</title>
+  <meta name="description" content="Transform, edit, and format JSON/YAML values instantly in your browser. Supports nested data, flatten view, tree view, number increment, smart date+sequence detection, string replacement, and JSON↔YAML output. 100% client-side, no data leaves your browser."/>
+  <meta name="keywords" content="json formatter, json editor, yaml editor, json to yaml, yaml to json, json prettify, json minify, online json tool, json viewer"/>
+  <meta name="robots" content="index, follow"/>
+  <meta name="author" content="Andi Putra Ogie"/>
+  <link rel="canonical" href="https://jsonify.example.com/"/>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://jsonify.example.com/"/>
+  <meta property="og:title" content="JSONify — Transform & Edit JSON Instantly"/>
+  <meta property="og:description" content="Edit, prettify, minify, and convert JSON/YAML instantly in your browser. Free, fast, and 100% client-side — your data never leaves your device."/>
+  <meta property="og:image" content="https://jsonify.example.com/og-image.png"/>
+  <meta property="og:locale" content="id_ID"/>
+  <meta property="og:locale:alternate" content="en_US"/>
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="JSONify — Transform & Edit JSON Instantly"/>
+  <meta name="twitter:description" content="Edit, prettify, minify, and convert JSON/YAML instantly in your browser. Free, fast, and 100% client-side."/>
+  <meta name="twitter:image" content="https://jsonify.example.com/og-image.png"/>
+
+  <!-- Structured data for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "JSONify",
+    "url": "https://jsonify.example.com/",
+    "description": "Transform, edit, and format JSON/YAML values instantly in your browser.",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
+  <link rel="stylesheet" href="style.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+</head>
+<body>
+<div class="app" id="app">
+  <header>
+    <div class="brand">
+      <div class="brand-icon"><i class="ti ti-braces"></i></div>
+      <div class="brand-text">
+        <span class="logo">JSONify</span>
+        <span class="logo-sub" id="h-sub">Transform &amp; Edit JSON Instantly</span>
+      </div>
+    </div>
+    <div class="header-right">
+      <button class="icon-btn" id="btnHelp" title="Cara penggunaan" onclick="openHelp()"><i class="ti ti-help-circle"></i></button>
+      <div style="display:flex;gap:3px">
+        <button class="lang-btn on" id="lb-id" onclick="setLang('id')">ID</button>
+        <button class="lang-btn" id="lb-en" onclick="setLang('en')">EN</button>
+      </div>
+      <button class="dm-btn" id="dmBtn" onclick="toggleDark()">
+        <i class="ti ti-moon" id="dmIcon"></i>
+      </button>
+    </div>
+  </header>
+
+  <div class="io-grid">
+    <div class="card io-card">
+      <div class="row-between">
+        <span class="lbl" id="lbl-input">Paste JSON / YAML kamu di sini</span>
+        <div style="display:flex;gap:4px">
+          <button class="icon-btn" id="btnUpload" title="Upload file" onclick="triggerUpload()"><i class="ti ti-upload"></i></button>
+          <input type="file" id="fileInput" accept=".json,.yaml,.yml,application/json,text/yaml" hidden onchange="handleFileUpload(event)"/>
+          <button class="icon-btn" id="btnDownloadIn" title="Download" onclick="downloadInput()"><i class="ti ti-download"></i></button>
+          <button class="icon-btn" id="btnCopyIn" title="Copy" onclick="copyInput()"><i class="ti ti-copy"></i></button>
+          <button class="icon-btn" id="btnPrettifyIn" title="Prettify" onclick="prettifyInput()"><i class="ti ti-arrows-maximize"></i></button>
+          <button class="icon-btn" id="btnMinifyIn" title="Minify" onclick="minifyInput()"><i class="ti ti-arrows-minimize"></i></button>
+        </div>
+      </div>
+      <textarea id="jsonInput" placeholder='{"key": "value"}' oninput="updateParseLabel()"></textarea>
+      <div id="parseError" class="err"></div>
+      <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+        <button class="btn-primary" onclick="parseJSON()">
+          <i class="ti ti-file-import"></i> <span id="btn-parse">Parse JSON</span>
+        </button>
+        <select id="sampleSelect" class="sel-fmt" style="min-width:190px;padding:6px 8px"></select>
+        <button class="btn-sec" onclick="loadSample()" id="btn-sample">Coba contoh</button>
+      </div>
+    </div>
+
+    <div class="card io-card" id="outputCard">
+      <div class="row-between">
+        <span class="sec-title" id="lbl-output">Output</span>
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+          <div class="tog-group">
+            <button class="tog-btn on" id="btn-fmt-json" onclick="setOutFormat('json')">JSON</button>
+            <button class="tog-btn" id="btn-fmt-yaml" onclick="setOutFormat('yaml')">YAML</button>
+          </div>
+          <div class="tog-group">
+            <button class="tog-btn" id="btn-compact" onclick="setOutMode('compact')">Compact</button>
+            <button class="tog-btn on" id="btn-pretty" onclick="setOutMode('pretty')">Pretty</button>
+          </div>
+          <button class="icon-btn" id="btnDownloadOut" title="Download" onclick="downloadOutput()"><i class="ti ti-download"></i></button>
+          <button class="btn-sec" onclick="copyOutput()">
+            <i class="ti ti-copy"></i> <span id="copyLabel">Salin</span>
+          </button>
+        </div>
+      </div>
+      <div class="out-box" id="outputBox"><span class="out-placeholder" id="outPlaceholder">Output akan muncul di sini setelah JSON diparse.</span></div>
+    </div>
+  </div>
+
+  <div class="card" id="fieldsCard" style="display:none">
+    <div class="row-between">
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+        <span class="sec-title" id="lbl-fields">Fields</span>
+        <span id="fieldCount" style="font-size:12px;color:var(--text2)"></span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+        <div class="search-wrap">
+          <i class="ti ti-search"></i>
+          <input type="text" id="fieldSearch" class="search-inp" placeholder="Cari key atau value..." oninput="applyFieldFilter()"/>
+        </div>
+        <div class="tog-group">
+          <button class="tog-btn on" id="mode-flat" onclick="setViewMode('flat')">Flatten</button>
+          <button class="tog-btn" id="mode-tree" onclick="setViewMode('tree')">Tree</button>
+        </div>
+      </div>
+    </div>
+    <div id="fieldsList"></div>
+  </div>
+
+  <div class="card" id="cmdCard" style="display:none">
+    <div style="margin-bottom:6px"><span class="sec-title" id="lbl-cmd">Perintah teks</span></div>
+    <p class="hint" id="hint-cmd">Gunakan dot notation: <em>tambah 1 ke order.summary.totalItems</em> | <em>ganti order.customer.name dengan Budi</em></p>
+    <div class="cmd-wrap">
+      <input type="text" id="cmdInput" placeholder="Ketik perintah..." onkeydown="if(event.key==='Enter')runCmd()"/>
+      <button class="btn-primary" onclick="runCmd()"><span id="btn-run">Jalankan</span></button>
+    </div>
+    <div id="cmdError" class="err"></div>
+  </div>
+
+  <footer>
+    <div class="footer-row">
+      <div class="footer-left">
+        <i class="ti ti-mail"></i>
+        <span id="footer-issue-label">Ada masalah? Kirim email:</span>
+        <a href="#" id="issueMailLink" onclick="return false">andiogie@gmail.com</a>
+      </div>
+      <div class="footer-right">
+        <p>&copy; <span id="yr"></span> &mdash; by <a href="https://andiogie.vercel.app/" target="_blank" rel="noopener noreferrer">Andi Putra Ogie</a> &middot; <a href="privacy.html">Privacy Policy</a></p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- How-to-use modal -->
+<div class="help-overlay" id="helpOverlay" onclick="if(event.target===this)closeHelp()">
+  <div class="help-modal">
+    <button class="icon-btn help-close" onclick="closeHelp()"><i class="ti ti-x"></i></button>
+    <h2 id="helpTitle"><i class="ti ti-help-circle"></i> Cara Penggunaan JSONify</h2>
+    <div id="helpBody"></div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+<script>
+// initialize help modal + tooltip text + sample dropdown for default language (id)
+document.getElementById('helpTitle').innerHTML = '<i class="ti ti-help-circle"></i> '+t('help-title');
+renderHelpContent();
+renderSampleOptions();
+updateParseLabel();
+document.getElementById('btnHelp').title=t('tt-help');
+document.getElementById('btnPrettifyIn').title=t('tt-prettify');
+document.getElementById('fieldSearch').placeholder=t('ph-search');
+</script>
+</body>
+</html>
