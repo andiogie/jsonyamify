@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FAQ — JSON vs YAML, Pertanyaan Umum | JSONify</title>
+  <meta name="description" content="Pertanyaan umum seputar JSON dan YAML: perbedaan, kapan pakai yang mana, keamanan data, dan cara kerja JSONify."/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://jsonyamify.andiogie.workers.dev/faq.html"/>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .policy{max-width:760px;margin:0 auto;padding:0 1.5rem 3rem}
+    .policy h1{font-size:24px;margin-bottom:.25rem}
+    .policy .updated{font-size:12.5px;color:var(--text3);margin-bottom:1.75rem}
+    .policy p{font-size:14px;line-height:1.75;color:var(--text2)}
+    .policy a{color:var(--text);font-weight:500;text-decoration:none}
+    .policy a:hover{text-decoration:underline}
+    .back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;margin-top:1.5rem;color:var(--text2);text-decoration:none}
+    .back-link:hover{color:var(--text)}
+    .lang-toggle-wrap{display:flex;justify-content:space-between;align-items:center;padding:1.5rem 1.5rem 0;max-width:760px;margin:0 auto}
+    .nav-links{display:flex;gap:14px;font-size:13px}
+    .nav-links a{color:var(--text2);text-decoration:none}
+    .nav-links a:hover{color:var(--text);text-decoration:underline}
+    .faq-item{border:0.5px solid var(--border);border-radius:10px;margin-bottom:10px;overflow:hidden}
+    .faq-q{padding:.85rem 1rem;font-size:14px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px;color:var(--text)}
+    .faq-q i{transition:transform .15s;color:var(--text3);flex-shrink:0}
+    .faq-item.open .faq-q i{transform:rotate(180deg)}
+    .faq-a{padding:0 1rem;max-height:0;overflow:hidden;transition:max-height .2s ease}
+    .faq-a-inner{font-size:13.5px;line-height:1.75;color:var(--text2);padding-bottom:.9rem}
+    .faq-a-inner code{font-family:ui-monospace,monospace;background:var(--bg2);padding:1px 6px;border-radius:5px;font-size:12.5px}
+  </style>
+</head>
+<body>
+<div id="app">
+  <div class="lang-toggle-wrap">
+    <div class="nav-links">
+      <a href="index.html">JSONify</a>
+      <a href="about.html" id="nav-about">Tentang</a>
+      <a href="faq.html"><strong id="nav-faq">FAQ</strong></a>
+      <a href="privacy.html" id="nav-privacy">Privacy</a>
+    </div>
+    <div style="display:flex;gap:3px">
+      <button class="lang-btn on" id="lb-id" onclick="setFLang('id')">ID</button>
+      <button class="lang-btn" id="lb-en" onclick="setFLang('en')">EN</button>
+    </div>
+  </div>
+
+  <div class="policy">
+    <h1 id="f-title">Pertanyaan Umum (FAQ)</h1>
+    <p class="updated" id="f-updated">Seputar JSON, YAML, dan cara kerja JSONify.</p>
+    <p id="f-intro" style="margin-bottom:1.5rem">Belum nemu jawaban yang kamu cari? Email kami di <a href="mailto:andiogie@gmail.com">andiogie@gmail.com</a>.</p>
+
+    <div id="faqList"></div>
+
+    <a class="back-link" href="index.html"><i class="ti ti-arrow-left"></i> <span id="back-text">Kembali ke JSONify</span></a>
+  </div>
+</div>
+
+<script>
+const FT={
+  id:{
+    title:'Pertanyaan Umum (FAQ)',
+    updated:'Seputar JSON, YAML, dan cara kerja JSONify.',
+    intro:'Belum nemu jawaban yang kamu cari? Email kami di <a href="mailto:andiogie@gmail.com">andiogie@gmail.com</a>.',
+    navAbout:'Tentang',navFaq:'FAQ',navPrivacy:'Privacy',back:'Kembali ke JSONify',
+    items:[
+      {q:'Apa perbedaan utama antara JSON dan YAML?',
+       a:'JSON (JavaScript Object Notation) menggunakan tanda kurung kurawal <code>{}</code> dan kurung siku <code>[]</code> untuk menandai struktur data, dengan tanda kutip wajib untuk key dan string. YAML (YAML Ain\'t Markup Language) menggunakan indentasi spasi untuk menandai struktur, tanpa kurung kurawal, sehingga lebih mudah dibaca manusia. Secara isi, keduanya bisa merepresentasikan data yang sama persis — cuma beda cara penulisannya.'},
+      {q:'Kapan sebaiknya pakai JSON, kapan pakai YAML?',
+       a:'JSON lebih umum dipakai untuk komunikasi antar aplikasi/API karena parsing-nya cepat dan didukung hampir semua bahasa pemrograman secara native. YAML lebih sering dipakai untuk file konfigurasi (misalnya Docker Compose, Kubernetes, GitHub Actions) karena lebih mudah dibaca dan diedit manusia, serta mendukung komentar (yang tidak didukung JSON).'},
+      {q:'Apakah YAML bisa mendukung komentar, sedangkan JSON tidak?',
+       a:'Benar. YAML mendukung komentar dengan tanda <code>#</code>, sedangkan format JSON murni tidak mendukung komentar sama sekali. Ini salah satu alasan YAML lebih disukai untuk file konfigurasi yang perlu didokumentasikan langsung di filenya.'},
+      {q:'Apakah data yang saya paste di JSONify disimpan di server?',
+       a:'Tidak. JSONify tidak punya server backend. Semua proses — parsing, edit, konversi — terjadi di browser kamu sendiri. Begitu kamu menutup atau refresh tab, semua data hilang dan tidak pernah kami simpan. Detail lengkap ada di <a href="privacy.html">halaman Privacy Policy</a>.'},
+      {q:'Bagaimana JSONify mendeteksi tanggal secara otomatis?',
+       a:'JSONify mengenali angka 8 digit dengan format <code>YYYYMMDD</code>, <code>DDMMYYYY</code>, atau <code>MMDDYYYY</code> sebagai kemungkinan tanggal, dan memvalidasi apakah kombinasi tahun/bulan/tanggalnya masuk akal. JSONify juga mendeteksi datetime format ISO 8601 (contoh: <code>2026-06-19T08:30:00Z</code>) serta pola "tanggal + nomor urut" pada string (misalnya nomor order yang diawali tanggal).'},
+      {q:'Bisakah saya mengubah JSON jadi YAML, atau sebaliknya?',
+       a:'Bisa. Paste data dalam format apa pun (JSON atau YAML), JSONify otomatis mendeteksi formatnya saat di-parse. Untuk output, kamu bisa pilih ingin hasil dalam bentuk JSON atau YAML lewat toggle di panel Output, lengkap dengan mode Compact (padat) atau Pretty (rapi berindentasi).'},
+      {q:'Apakah JSONify gratis?',
+       a:'Ya, JSONify 100% gratis digunakan tanpa perlu mendaftar atau login.'},
+      {q:'Saya menemukan bug atau ingin request fitur, harus ke mana?',
+       a:'Silakan email ke <a href="mailto:andiogie@gmail.com">andiogie@gmail.com</a> dengan deskripsi masalah dan langkah untuk mereproduksinya — ini akan sangat membantu proses perbaikan.'}
+    ]
+  },
+  en:{
+    title:'Frequently Asked Questions',
+    updated:'About JSON, YAML, and how JSONify works.',
+    intro:'Can\'t find the answer you\'re looking for? Email us at <a href="mailto:andiogie@gmail.com">andiogie@gmail.com</a>.',
+    navAbout:'About',navFaq:'FAQ',navPrivacy:'Privacy',back:'Back to JSONify',
+    items:[
+      {q:'What\'s the main difference between JSON and YAML?',
+       a:'JSON (JavaScript Object Notation) uses curly braces <code>{}</code> and square brackets <code>[]</code> to mark structure, with mandatory quotes for keys and strings. YAML (YAML Ain\'t Markup Language) uses indentation to mark structure, with no braces, making it more human-readable. Content-wise, both can represent exactly the same data — they just differ in syntax.'},
+      {q:'When should I use JSON vs. YAML?',
+       a:'JSON is more common for app-to-app/API communication because it parses fast and is natively supported by nearly every programming language. YAML is more often used for configuration files (e.g. Docker Compose, Kubernetes, GitHub Actions) because it\'s easier for humans to read and edit, and it supports comments (which JSON doesn\'t).'},
+      {q:'Does YAML support comments while JSON doesn\'t?',
+       a:'Correct. YAML supports comments using <code>#</code>, while pure JSON has no comment syntax at all. This is one reason YAML is preferred for config files that need inline documentation.'},
+      {q:'Is the data I paste into JSONify stored on a server?',
+       a:'No. JSONify has no backend server. Everything — parsing, editing, converting — happens in your own browser. Once you close or refresh the tab, all of it is gone and we never keep a copy. Full details on our <a href="privacy.html">Privacy Policy page</a>.'},
+      {q:'How does JSONify auto-detect dates?',
+       a:'JSONify recognizes 8-digit numbers in <code>YYYYMMDD</code>, <code>DDMMYYYY</code>, or <code>MMDDYYYY</code> format as possible dates, and validates whether the year/month/day combination makes sense. It also detects ISO 8601 datetimes (e.g. <code>2026-06-19T08:30:00Z</code>) and a "date + sequence number" pattern in strings (e.g. order numbers that start with a date).'},
+      {q:'Can I convert JSON to YAML, or the other way around?',
+       a:'Yes. Paste data in either format (JSON or YAML) — JSONify auto-detects it on parse. For output, choose JSON or YAML via the toggle in the Output panel, with Compact or Pretty mode.'},
+      {q:'Is JSONify free?',
+       a:'Yes, JSONify is 100% free to use, no sign-up or login required.'},
+      {q:'I found a bug or want to request a feature, where do I go?',
+       a:'Please email <a href="mailto:andiogie@gmail.com">andiogie@gmail.com</a> with a description of the issue and steps to reproduce it — that helps a lot with fixing it.'}
+    ]
+  }
+};
+function renderFaq(l){
+  const d=FT[l];
+  const list=document.getElementById('faqList');
+  list.innerHTML='';
+  d.items.forEach((item,i)=>{
+    const wrap=document.createElement('div');wrap.className='faq-item';
+    wrap.innerHTML=
+      '<div class="faq-q" onclick="toggleFaq('+i+')">'+item.q+' <i class="ti ti-chevron-down"></i></div>'+
+      '<div class="faq-a" id="faq-a-'+i+'"><div class="faq-a-inner">'+item.a+'</div></div>';
+    list.appendChild(wrap);
+  });
+}
+function toggleFaq(i){
+  const item=document.getElementById('faq-a-'+i).parentElement;
+  const body=document.getElementById('faq-a-'+i);
+  const isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el=>{el.classList.remove('open');el.querySelector('.faq-a').style.maxHeight=null;});
+  if(!isOpen){
+    item.classList.add('open');
+    body.style.maxHeight=body.scrollHeight+'px';
+  }
+}
+function setFLang(l){
+  const d=FT[l];
+  document.getElementById('lb-id').classList.toggle('on',l==='id');
+  document.getElementById('lb-en').classList.toggle('on',l==='en');
+  document.documentElement.lang=l;
+  document.getElementById('f-title').textContent=d.title;
+  document.getElementById('f-updated').textContent=d.updated;
+  document.getElementById('f-intro').innerHTML=d.intro;
+  document.getElementById('nav-about').textContent=d.navAbout;
+  document.getElementById('nav-faq').textContent=d.navFaq;
+  document.getElementById('nav-privacy').textContent=d.navPrivacy;
+  document.getElementById('back-text').textContent=d.back;
+  renderFaq(l);
+}
+renderFaq('id');
+</script>
+</body>
+</html>

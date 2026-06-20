@@ -8,14 +8,31 @@
   <meta name="keywords" content="json formatter, json editor, yaml editor, json to yaml, yaml to json, json prettify, json minify, online json tool, json viewer"/>
   <meta name="robots" content="index, follow"/>
   <meta name="author" content="Andi Putra Ogie"/>
-  <link rel="canonical" href="https://jsonify.example.com/"/>
+  <link rel="canonical" href="https://jsonyamify.andiogie.workers.dev/"/>
   <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+
+  <!-- ============================================================
+       GOOGLE ADSENSE SETUP - baca dulu sebelum diaktifkan
+       1) Daftar di https://www.google.com/adsense lalu tambah situs ini.
+       2) Google akan kasih Publisher ID berformat: ca-pub-XXXXXXXXXXXXXXXX
+       3) Ganti SEMUA "ca-pub-XXXXXXXXXXXXXXXX" di bawah ini dengan ID asli kamu.
+       4) Aktifkan tag script auto-ads di bawah (hapus pembungkus komentarnya)
+          HANYA SETELAH akun AdSense kamu disetujui. Sebelum disetujui,
+          script ini akan menampilkan error di console kalau diaktifkan
+          dengan ID yang belum valid.
+       5) Jangan lupa juga update file /ads.txt dengan Publisher ID yang sama.
+     ============================================================ -->
+  <meta name="google-adsense-account" content="ca-pub-XXXXXXXXXXXXXXXX"/>
+  <!--
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+  -->
+
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website"/>
-  <meta property="og:url" content="https://jsonify.example.com/"/>
+  <meta property="og:url" content="https://jsonyamify.andiogie.workers.dev/"/>
   <meta property="og:title" content="JSONify — Transform & Edit JSON Instantly"/>
   <meta property="og:description" content="Edit, prettify, minify, and convert JSON/YAML instantly in your browser. Free, fast, and 100% client-side — your data never leaves your device."/>
-  <meta property="og:image" content="https://jsonify.example.com/og-image.png"/>
+  <meta property="og:image" content="https://jsonyamify.andiogie.workers.dev/og-image.png"/>
   <meta property="og:locale" content="id_ID"/>
   <meta property="og:locale:alternate" content="en_US"/>
 
@@ -23,7 +40,7 @@
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="JSONify — Transform & Edit JSON Instantly"/>
   <meta name="twitter:description" content="Edit, prettify, minify, and convert JSON/YAML instantly in your browser. Free, fast, and 100% client-side."/>
-  <meta name="twitter:image" content="https://jsonify.example.com/og-image.png"/>
+  <meta name="twitter:image" content="https://jsonyamify.andiogie.workers.dev/og-image.png"/>
 
   <!-- Structured data for SEO -->
   <script type="application/ld+json">
@@ -31,7 +48,7 @@
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "JSONify",
-    "url": "https://jsonify.example.com/",
+    "url": "https://jsonyamify.andiogie.workers.dev/",
     "description": "Transform, edit, and format JSON/YAML values instantly in your browser.",
     "applicationCategory": "DeveloperApplication",
     "operatingSystem": "Any",
@@ -82,7 +99,7 @@
           <button class="icon-btn" id="btnMinifyIn" title="Minify" onclick="minifyInput()"><i class="ti ti-arrows-minimize"></i></button>
         </div>
       </div>
-      <textarea id="jsonInput" placeholder='{"key": "value"}' oninput="updateParseLabel()"></textarea>
+      <textarea id="jsonInput" placeholder='{"key": "value"}'></textarea>
       <div id="parseError" class="err"></div>
       <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap;align-items:center">
         <button class="btn-primary" onclick="parseJSON()">
@@ -153,7 +170,7 @@
         <a href="#" id="issueMailLink" onclick="return false">andiogie@gmail.com</a>
       </div>
       <div class="footer-right">
-        <p>&copy; <span id="yr"></span> &mdash; by <a href="https://andiogie.vercel.app/" target="_blank" rel="noopener noreferrer">Andi Putra Ogie</a> &middot; <a href="privacy.html">Privacy Policy</a></p>
+        <p>&copy; <span id="yr"></span> &mdash; by <a href="https://andiogie.vercel.app/" target="_blank" rel="noopener noreferrer">Andi Putra Ogie</a> &middot; <a href="about.html">About</a> &middot; <a href="faq.html">FAQ</a> &middot; <a href="privacy.html">Privacy Policy</a></p>
       </div>
     </div>
   </footer>
@@ -174,7 +191,6 @@
 document.getElementById('helpTitle').innerHTML = '<i class="ti ti-help-circle"></i> '+t('help-title');
 renderHelpContent();
 renderSampleOptions();
-updateParseLabel();
 document.getElementById('btnHelp').title=t('tt-help');
 document.getElementById('btnPrettifyIn').title=t('tt-prettify');
 document.getElementById('fieldSearch').placeholder=t('ph-search');

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tentang JSONify — About JSONify</title>
+  <meta name="description" content="Kenal lebih dekat dengan JSONify: tool gratis untuk memformat, mengedit, dan mengonversi JSON/YAML langsung di browser. Cerita, fitur, dan rencana ke depan."/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://jsonyamify.andiogie.workers.dev/about.html"/>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .policy{max-width:760px;margin:0 auto;padding:0 1.5rem 3rem}
+    .policy h1{font-size:24px;margin-bottom:.25rem}
+    .policy .updated{font-size:12.5px;color:var(--text3);margin-bottom:1.75rem}
+    .policy h2{font-size:16px;margin:1.75rem 0 .6rem;display:flex;align-items:center;gap:8px}
+    .policy p,.policy li{font-size:14px;line-height:1.75;color:var(--text2)}
+    .policy ul{margin:.4rem 0 .8rem 1.2rem}
+    .policy a{color:var(--text);font-weight:500;text-decoration:none}
+    .policy a:hover{text-decoration:underline}
+    .back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;margin-top:1rem;color:var(--text2);text-decoration:none}
+    .back-link:hover{color:var(--text)}
+    .lang-toggle-wrap{display:flex;justify-content:space-between;align-items:center;padding:1.5rem 1.5rem 0;max-width:760px;margin:0 auto}
+    .nav-links{display:flex;gap:14px;font-size:13px}
+    .nav-links a{color:var(--text2);text-decoration:none}
+    .nav-links a:hover{color:var(--text);text-decoration:underline}
+    .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:1rem 0}
+    .stat-box{border:0.5px solid var(--border);border-radius:10px;padding:.8rem;text-align:center}
+    .stat-box .n{font-size:20px;font-weight:700;color:var(--text)}
+    .stat-box .l{font-size:11.5px;color:var(--text3)}
+  </style>
+</head>
+<body>
+<div id="app">
+  <div class="lang-toggle-wrap">
+    <div class="nav-links">
+      <a href="index.html">JSONify</a>
+      <a href="about.html"><strong id="nav-about">Tentang</strong></a>
+      <a href="faq.html" id="nav-faq">FAQ</a>
+      <a href="privacy.html" id="nav-privacy">Privacy</a>
+    </div>
+    <div style="display:flex;gap:3px">
+      <button class="lang-btn on" id="lb-id" onclick="setALang('id')">ID</button>
+      <button class="lang-btn" id="lb-en" onclick="setALang('en')">EN</button>
+    </div>
+  </div>
+
+  <div class="policy">
+    <h1 id="a-title">Tentang JSONify</h1>
+    <p class="updated" id="a-updated">Dibuat dan dirawat oleh satu orang developer, dengan satu tujuan: bikin kerjaan bongkar-pasang JSON/YAML jadi lebih cepat.</p>
+
+    <p id="a-intro">JSONify lahir dari kebutuhan sehari-hari: terlalu sering harus buka payload API, file konfigurasi, atau data uji coba, lalu mengubah satu-dua nilai di dalamnya secara manual — tambah angka, ganti tanggal, ubah teks — yang kalau dikerjakan lewat editor teks biasa jadi makan waktu dan rawan salah ketik. JSONify dibuat supaya proses itu jadi beberapa klik saja.</p>
+
+    <h2 id="h-1"><i class="ti ti-bulb"></i> Mengapa JSONify Dibuat</h2>
+    <p id="p-1">Kebanyakan JSON formatter di luar sana cuma bisa merapikan (prettify) atau memadatkan (minify) data. JSONify melangkah lebih jauh: setiap nilai di dalam data otomatis dikenali tipenya — angka, tanggal, datetime, gabungan tanggal+nomor urut, teks — dan masing-masing dapat aksi cepat sendiri. Mau menaikkan angka stok produk? Klik +1. Mau set tanggal kadaluarsa ke hari ini? Klik sekali. Tanpa harus hitung manual atau ketik ulang seluruh struktur data.</p>
+
+    <h2 id="h-2"><i class="ti ti-target-arrow"></i> Untuk Siapa Tool Ini</h2>
+    <ul id="p-2-list">
+      <li>Developer/programmer yang sering uji coba payload API.</li>
+      <li>QA/tester yang butuh data dummy dengan variasi nilai cepat.</li>
+      <li>Data analyst yang perlu konversi cepat antara format JSON dan YAML.</li>
+      <li>Siapa pun yang perlu melihat struktur data besar dengan rapi (tree view) tanpa install aplikasi apa pun.</li>
+    </ul>
+
+    <h2 id="h-3"><i class="ti ti-shield-lock"></i> Filosofi: Privasi Dulu</h2>
+    <p id="p-3">Semua pemrosesan data di JSONify berjalan 100% di browser kamu sendiri — tidak ada server backend yang menerima atau menyimpan data yang kamu paste atau upload. Ini bukan sekadar klaim marketing; karena memang situs ini tidak punya backend sama sekali. Detail lengkapnya ada di <a href="privacy.html">halaman Privacy Policy</a> kami.</p>
+
+    <h2 id="h-4"><i class="ti ti-list-check"></i> Fitur Utama</h2>
+    <div class="stat-grid">
+      <div class="stat-box"><div class="n">2</div><div class="l" id="s1">Format input/output (JSON & YAML)</div></div>
+      <div class="stat-box"><div class="n">6+</div><div class="l" id="s2">Tipe data otomatis dideteksi</div></div>
+      <div class="stat-box"><div class="n">2</div><div class="l" id="s3">Mode tampilan (Flatten & Tree)</div></div>
+      <div class="stat-box"><div class="n">4</div><div class="l" id="s4">Template contoh siap pakai</div></div>
+    </div>
+    <p id="p-4">Selengkapnya tentang fitur ada di halaman utama, atau buka panduan "Cara Penggunaan" lewat ikon tanda tanya di pojok kanan atas halaman utama.</p>
+
+    <h2 id="h-5"><i class="ti ti-rocket"></i> Rencana Ke Depan</h2>
+    <p id="p-5">JSONify masih terus dikembangkan secara bertahap. Beberapa ide yang sedang dipertimbangkan: validasi JSON Schema, perbandingan (diff) dua dokumen JSON/YAML, undo/redo, ekspor ke CSV, dan beberapa tool kecil tambahan seperti base64 encoder dan timestamp converter. Daftar lengkap roadmap ada di <a href="https://github.com" target="_blank" rel="noopener noreferrer">repository GitHub</a> proyek ini.</p>
+
+    <h2 id="h-6"><i class="ti ti-mail"></i> Kontak</h2>
+    <p id="p-6">Punya saran fitur, menemukan bug, atau cuma mau bilang halo? Email ke <a href="mailto:andiogie@gmail.com">andiogie@gmail.com</a>.</p>
+
+    <a class="back-link" href="index.html"><i class="ti ti-arrow-left"></i> <span id="back-text">Kembali ke JSONify</span></a>
+  </div>
+</div>
+
+<script>
+const AT={
+  id:{
+    title:'Tentang JSONify',
+    updated:'Dibuat dan dirawat oleh satu orang developer, dengan satu tujuan: bikin kerjaan bongkar-pasang JSON/YAML jadi lebih cepat.',
+    intro:'JSONify lahir dari kebutuhan sehari-hari: terlalu sering harus buka payload API, file konfigurasi, atau data uji coba, lalu mengubah satu-dua nilai di dalamnya secara manual — tambah angka, ganti tanggal, ubah teks — yang kalau dikerjakan lewat editor teks biasa jadi makan waktu dan rawan salah ketik. JSONify dibuat supaya proses itu jadi beberapa klik saja.',
+    h1:'Mengapa JSONify Dibuat',
+    p1:'Kebanyakan JSON formatter di luar sana cuma bisa merapikan (prettify) atau memadatkan (minify) data. JSONify melangkah lebih jauh: setiap nilai di dalam data otomatis dikenali tipenya — angka, tanggal, datetime, gabungan tanggal+nomor urut, teks — dan masing-masing dapat aksi cepat sendiri. Mau menaikkan angka stok produk? Klik +1. Mau set tanggal kadaluarsa ke hari ini? Klik sekali. Tanpa harus hitung manual atau ketik ulang seluruh struktur data.',
+    h2:'Untuk Siapa Tool Ini',
+    p2:['Developer/programmer yang sering uji coba payload API.','QA/tester yang butuh data dummy dengan variasi nilai cepat.','Data analyst yang perlu konversi cepat antara format JSON dan YAML.','Siapa pun yang perlu melihat struktur data besar dengan rapi (tree view) tanpa install aplikasi apa pun.'],
+    h3:'Filosofi: Privasi Dulu',
+    p3:'Semua pemrosesan data di JSONify berjalan 100% di browser kamu sendiri — tidak ada server backend yang menerima atau menyimpan data yang kamu paste atau upload. Ini bukan sekadar klaim marketing; karena memang situs ini tidak punya backend sama sekali. Detail lengkapnya ada di <a href="privacy.html">halaman Privacy Policy</a> kami.',
+    h4:'Fitur Utama',
+    s1:'Format input/output (JSON & YAML)',s2:'Tipe data otomatis dideteksi',s3:'Mode tampilan (Flatten & Tree)',s4:'Template contoh siap pakai',
+    p4:'Selengkapnya tentang fitur ada di halaman utama, atau buka panduan "Cara Penggunaan" lewat ikon tanda tanya di pojok kanan atas halaman utama.',
+    h5:'Rencana Ke Depan',
+    p5:'JSONify masih terus dikembangkan secara bertahap. Beberapa ide yang sedang dipertimbangkan: validasi JSON Schema, perbandingan (diff) dua dokumen JSON/YAML, undo/redo, ekspor ke CSV, dan beberapa tool kecil tambahan seperti base64 encoder dan timestamp converter. Daftar lengkap roadmap ada di <a href="https://github.com" target="_blank" rel="noopener noreferrer">repository GitHub</a> proyek ini.',
+    h6:'Kontak',
+    p6:'Punya saran fitur, menemukan bug, atau cuma mau bilang halo? Email ke <a href="mailto:andiogie@gmail.com">andiogie@gmail.com</a>.',
+    back:'Kembali ke JSONify',
+    navAbout:'Tentang',navFaq:'FAQ',navPrivacy:'Privacy'
+  },
+  en:{
+    title:'About JSONify',
+    updated:'Built and maintained by a single developer, with one goal: make editing JSON/YAML data faster.',
+    intro:'JSONify came out of a daily annoyance: too often having to open an API payload, a config file, or test data, then manually change a value or two inside it — bump a number, change a date, edit some text — which, done in a plain text editor, eats time and invites typos. JSONify exists to turn that into a couple of clicks.',
+    h1:'Why JSONify Was Built',
+    p1:'Most JSON formatters out there only prettify or minify data. JSONify goes further: every value in your data is automatically recognized by type — number, date, datetime, date+sequence, text — and each gets its own quick action. Want to bump a stock count? Click +1. Want to set an expiry date to today? One click. No manual math, no retyping the whole structure.',
+    h2:'Who It\'s For',
+    p2:['Developers/programmers who frequently test API payloads.','QA/testers who need varied dummy data quickly.','Data analysts who need quick conversion between JSON and YAML.','Anyone who needs to inspect a large data structure cleanly (tree view) without installing any app.'],
+    h3:'Privacy-First Philosophy',
+    p3:'All data processing in JSONify happens 100% in your own browser — there\'s no backend server receiving or storing anything you paste or upload. This isn\'t a marketing claim; this site simply has no backend at all. Full details on our <a href="privacy.html">Privacy Policy page</a>.',
+    h4:'Key Features',
+    s1:'Input/output formats (JSON & YAML)',s2:'Auto-detected data types',s3:'View modes (Flatten & Tree)',s4:'Ready-made example templates',
+    p4:'More details on the main page, or open the "How to Use" guide via the question-mark icon in the top-right corner of the main page.',
+    h5:'What\'s Next',
+    p5:'JSONify is still being developed step by step. Ideas under consideration: JSON Schema validation, diffing two JSON/YAML documents, undo/redo, CSV export, and a few more small tools like a base64 encoder and timestamp converter. The full roadmap lives in this project\'s <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub repository</a>.',
+    h6:'Contact',
+    p6:'Got a feature idea, found a bug, or just want to say hi? Email <a href="mailto:andiogie@gmail.com">andiogie@gmail.com</a>.',
+    back:'Back to JSONify',
+    navAbout:'About',navFaq:'FAQ',navPrivacy:'Privacy'
+  }
+};
+function setALang(l){
+  const d=AT[l];
+  document.getElementById('lb-id').classList.toggle('on',l==='id');
+  document.getElementById('lb-en').classList.toggle('on',l==='en');
+  document.documentElement.lang=l;
+  document.getElementById('a-title').textContent=d.title;
+  document.getElementById('a-updated').textContent=d.updated;
+  document.getElementById('a-intro').textContent=d.intro;
+  document.getElementById('h-1').innerHTML='<i class="ti ti-bulb"></i> '+d.h1;
+  document.getElementById('p-1').textContent=d.p1;
+  document.getElementById('h-2').innerHTML='<i class="ti ti-target-arrow"></i> '+d.h2;
+  document.getElementById('p-2-list').innerHTML=d.p2.map(x=>'<li>'+x+'</li>').join('');
+  document.getElementById('h-3').innerHTML='<i class="ti ti-shield-lock"></i> '+d.h3;
+  document.getElementById('p-3').innerHTML=d.p3;
+  document.getElementById('h-4').innerHTML='<i class="ti ti-list-check"></i> '+d.h4;
+  document.getElementById('s1').textContent=d.s1;
+  document.getElementById('s2').textContent=d.s2;
+  document.getElementById('s3').textContent=d.s3;
+  document.getElementById('s4').textContent=d.s4;
+  document.getElementById('p-4').textContent=d.p4;
+  document.getElementById('h-5').innerHTML='<i class="ti ti-rocket"></i> '+d.h5;
+  document.getElementById('p-5').innerHTML=d.p5;
+  document.getElementById('h-6').innerHTML='<i class="ti ti-mail"></i> '+d.h6;
+  document.getElementById('p-6').innerHTML=d.p6;
+  document.getElementById('back-text').textContent=d.back;
+  document.getElementById('nav-about').textContent=d.navAbout;
+  document.getElementById('nav-faq').textContent=d.navFaq;
+  document.getElementById('nav-privacy').textContent=d.navPrivacy;
+}
+</script>
+</body>
+</html>
