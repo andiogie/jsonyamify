@@ -40,16 +40,20 @@ Tidak perlu build tool atau server backend. Cukup:
 ```
 .
 ├── index.html      # markup halaman utama
+├── about.html      # halaman Tentang
+├── faq.html        # halaman FAQ (JSON vs YAML, dll)
 ├── privacy.html    # halaman kebijakan privasi
 ├── style.css       # semua styling
 ├── script.js       # semua logika aplikasi
+├── ads.txt         # verifikasi Google AdSense (isi Publisher ID setelah disetujui)
+├── favicon.svg     # ikon situs
 ├── robots.txt      # instruksi untuk crawler search engine
 ├── sitemap.xml     # daftar halaman untuk Google Search Console
 └── README.md
 ```
 CSS dan JS dipisah dari HTML agar lebih mudah dirawat, di-debug, dan di-cache oleh browser.
 
-> ⚠️ **Penting:** ganti semua placeholder `https://jsonify.example.com/` di `index.html`, `privacy.html`, `sitemap.xml`, dan `robots.txt` dengan domain asli kamu setelah deploy (misalnya `https://namakamu.pages.dev/`).
+> ⚠️ **Penting:** ganti semua placeholder `https://jsonify.example.com/` di `index.html`, `about.html`, `faq.html`, `privacy.html`, `sitemap.xml`, dan `robots.txt` dengan domain asli kamu setelah deploy (misalnya `https://namakamu.pages.dev/`). Ganti juga `ca-pub-XXXXXXXXXXXXXXXX` di `index.html` dan `pub-0000000000000000` di `ads.txt` dengan Publisher ID asli setelah akun AdSense kamu disetujui.
 
 ### 🤝 Kontribusi
 Pull request terbuka untuk siapa saja. Untuk laporan bug/saran fitur, kirim email lewat tautan di footer aplikasi atau buka issue di repo ini.
@@ -93,16 +97,20 @@ No build step or backend required.
 ```
 .
 ├── index.html      # main page markup
+├── about.html      # About page
+├── faq.html        # FAQ page (JSON vs YAML, etc.)
 ├── privacy.html    # privacy policy page
 ├── style.css       # all styling
 ├── script.js       # all application logic
+├── ads.txt         # Google AdSense verification (fill in Publisher ID once approved)
+├── favicon.svg     # site icon
 ├── robots.txt      # search engine crawler instructions
 ├── sitemap.xml     # page list for Google Search Console
 └── README.md
 ```
 CSS and JS are kept separate from the HTML for easier maintenance, debugging, and browser caching.
 
-> ⚠️ **Important:** replace every `https://jsonify.example.com/` placeholder in `index.html`, `privacy.html`, `sitemap.xml`, and `robots.txt` with your real domain after deploying (e.g. `https://yourname.pages.dev/`).
+> ⚠️ **Important:** replace every `https://jsonify.example.com/` placeholder in `index.html`, `about.html`, `faq.html`, `privacy.html`, `sitemap.xml`, and `robots.txt` with your real domain after deploying (e.g. `https://yourname.pages.dev/`). Also replace `ca-pub-XXXXXXXXXXXXXXXX` in `index.html` and `pub-0000000000000000` in `ads.txt` with your real Publisher ID once your AdSense account is approved.
 
 ### 🤝 Contributing
 Pull requests are welcome. For bug reports or feature requests, email via the link in the app footer or open an issue on this repo.

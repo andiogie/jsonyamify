@@ -3,11 +3,9 @@ document.getElementById('yr').textContent=new Date().getFullYear();
 
 const T={
   id:{
-    'h-sub':'Transform & Edit JSON Instan',
+    'h-sub':'Format, edit & konversi JSON/YAML langsung di browser',
     'lbl-input':'Paste JSON / YAML kamu di sini',
-    'btn-parse':'Parse',
-    'btn-parse-json':'Parse JSON',
-    'btn-parse-yaml':'Parse YAML',
+    'btn-parse':'Parse JSON',
     'btn-sample':'Coba contoh',
     'lbl-fields':'Fields',
     'lbl-cmd':'Perintah teks',
@@ -17,6 +15,17 @@ const T={
     'copy':'Salin','copied':'Tersalin!',
     'today':'Hari ini','set':'Set','update':'Update','now':'Set Now',
     'fields':'field',
+    'out-empty':'Output akan muncul di sini setelah JSON diparse.',
+    'lbl-bulk':'Set semua per tipe:',
+    'bulk-date':'Tanggal &rarr; Hari ini',
+    'bulk-datetime':'Datetime &rarr; Now',
+    'bulk-number':'&rarr; Semua Angka',
+    'bulk-dateseq':'Update Semua Date+Seq',
+    'bulk-done-date':' tanggal di-set ke hari ini.',
+    'bulk-done-datetime':' datetime di-set ke sekarang.',
+    'bulk-done-number':' angka diubah.',
+    'bulk-done-dateseq':' date+seq di-update.',
+    'bulk-none':'Gak ada field tipe ini yang ditemukan.',
     'err-invalid':'JSON/YAML tidak valid: ',
     'err-notfound':' tidak ditemukan.',
     'err-notnum':' bukan angka.',
@@ -25,14 +34,14 @@ const T={
     'ph-cmd':'Ketik perintah...',
     'ph-search':'Cari key atau value...',
     'footer-issue-label':'Ada masalah? Kirim email:',
-    'issue-subject':'[JSONify] Laporan Masalah',
+    'issue-subject':'[JSONYAMify] Laporan Masalah',
     'issue-body':'Halo,\n\nDeskripsi masalah:\n\n\nLangkah reproduksi:\n1. \n2. \n\nHasil yang diharapkan:\n\n\nHasil yang terjadi:\n\n',
     'tt-upload':'Upload file JSON/YAML','tt-download':'Download','tt-copy':'Copy','tt-minify':'Minify','tt-prettify':'Prettify','tt-help':'Cara penggunaan',
     'opt-group-json':'Contoh JSON','opt-group-yaml':'Contoh YAML',
     'opt-json1':'E-commerce Order','opt-json2':'User Profile & Subscription',
     'opt-yaml1':'Server / Infra Config','opt-yaml2':'CI/CD Pipeline',
     'btn-help':'Cara Penggunaan',
-    'help-title':'Cara Penggunaan JSONify',
+    'help-title':'Cara Penggunaan JSONYAMify',
     'help-intro':'Ikuti langkah-langkah singkat berikut untuk mulai mengubah dan mengedit data JSON / YAML kamu.',
     'help-step1-t':'1. Masukkan data',
     'help-step1':'Paste JSON atau YAML di kotak <strong>Input</strong>, atau klik tombol upload untuk membuka file <code>.json</code>/<code>.yaml</code>. Klik <strong>Parse JSON</strong> untuk memproses.',
@@ -50,11 +59,9 @@ const T={
     'help-close':'Tutup',
   },
   en:{
-    'h-sub':'Transform & Edit JSON Instantly',
+    'h-sub':'Format, edit & convert JSON/YAML right in your browser',
     'lbl-input':'Paste your JSON / YAML here',
-    'btn-parse':'Parse',
-    'btn-parse-json':'Parse JSON',
-    'btn-parse-yaml':'Parse YAML',
+    'btn-parse':'Parse JSON',
     'btn-sample':'Try example',
     'lbl-fields':'Fields',
     'lbl-cmd':'Text command',
@@ -64,6 +71,17 @@ const T={
     'copy':'Copy','copied':'Copied!',
     'today':'Today','set':'Set','update':'Update','now':'Set Now',
     'fields':'field(s)',
+    'out-empty':'Output will appear here once the JSON is parsed.',
+    'lbl-bulk':'Set all per type:',
+    'bulk-date':'Dates &rarr; Today',
+    'bulk-datetime':'Datetimes &rarr; Now',
+    'bulk-number':'&rarr; All Numbers',
+    'bulk-dateseq':'Update All Date+Seq',
+    'bulk-done-date':' date field(s) set to today.',
+    'bulk-done-datetime':' datetime field(s) set to now.',
+    'bulk-done-number':' number field(s) updated.',
+    'bulk-done-dateseq':' date+seq field(s) updated.',
+    'bulk-none':'No fields of this type were found.',
     'err-invalid':'Invalid JSON/YAML: ',
     'err-notfound':' not found.',
     'err-notnum':' is not a number.',
@@ -72,14 +90,14 @@ const T={
     'ph-cmd':'Type a command...',
     'ph-search':'Search key or value...',
     'footer-issue-label':'Found an issue? Email:',
-    'issue-subject':'[JSONify] Issue Report',
+    'issue-subject':'[JSONYAMify] Issue Report',
     'issue-body':'Hi,\n\nIssue description:\n\n\nSteps to reproduce:\n1. \n2. \n\nExpected result:\n\n\nActual result:\n\n',
     'tt-upload':'Upload JSON/YAML file','tt-download':'Download','tt-copy':'Copy','tt-minify':'Minify','tt-prettify':'Prettify','tt-help':'How to use',
     'opt-group-json':'JSON Examples','opt-group-yaml':'YAML Examples',
     'opt-json1':'E-commerce Order','opt-json2':'User Profile & Subscription',
     'opt-yaml1':'Server / Infra Config','opt-yaml2':'CI/CD Pipeline',
     'btn-help':'How to Use',
-    'help-title':'How to Use JSONify',
+    'help-title':'How to Use JSONYAMify',
     'help-intro':'Follow these quick steps to start transforming and editing your JSON / YAML data.',
     'help-step1-t':'1. Add your data',
     'help-step1':'Paste JSON or YAML into the <strong>Input</strong> box, or click the upload button to open a <code>.json</code>/<code>.yaml</code> file. Click <strong>Parse JSON</strong> to process it.',
@@ -104,15 +122,14 @@ function setLang(l){
   document.getElementById('lb-id').classList.toggle('on',l==='id');
   document.getElementById('lb-en').classList.toggle('on',l==='en');
   document.documentElement.lang=l;
-  ['h-sub','lbl-input','btn-sample','lbl-fields','lbl-cmd','btn-run','lbl-output','footer-issue-label'].forEach(id=>{
+  ['h-sub','lbl-input','btn-parse','btn-sample','lbl-fields','lbl-cmd','btn-run','lbl-output','footer-issue-label'].forEach(id=>{
     const el=document.getElementById(id);if(el)el.textContent=t(id);
   });
-  updateParseLabel();
   const h=document.getElementById('hint-cmd');if(h)h.innerHTML=t('hint-cmd');
   const p=document.getElementById('cmdInput');if(p)p.placeholder=t('ph-cmd');
   const sp=document.getElementById('fieldSearch');if(sp)sp.placeholder=t('ph-search');
   const c=document.getElementById('copyLabel');if(c)c.textContent=t('copy');
-  const ph=document.getElementById('outPlaceholder');if(ph)ph.textContent=t('err-output-empty')||document.getElementById('outPlaceholder').textContent;
+  const ph=document.getElementById('outPlaceholder');if(ph)ph.textContent=t('out-empty');
   document.getElementById('btnUpload').title=t('tt-upload');
   document.getElementById('btnDownloadIn').title=t('tt-download');
   document.getElementById('btnCopyIn').title=t('tt-copy');
@@ -125,6 +142,11 @@ function setLang(l){
   updateIssueMailLink();
   renderHelpContent();
   renderSampleOptions();
+  const lblBulk=document.getElementById('lbl-bulk');if(lblBulk)lblBulk.textContent=t('lbl-bulk');
+  const bd=document.getElementById('bulk-date');if(bd)bd.innerHTML='<i class="ti ti-calendar"></i> '+t('bulk-date');
+  const bdt=document.getElementById('bulk-datetime');if(bdt)bdt.innerHTML='<i class="ti ti-clock"></i> '+t('bulk-datetime');
+  const bn=document.getElementById('bulk-number');if(bn)bn.innerHTML=t('bulk-number');
+  const bds=document.getElementById('bulk-dateseq');if(bds)bds.innerHTML='<i class="ti ti-calendar-stats"></i> '+t('bulk-dateseq');
   if(data)renderFields();
 }
 
@@ -456,28 +478,7 @@ function prettifyInput(){
   parseJSON();
 }
 
-// Lightweight peek to tell JSON apart from YAML before the user even hits Parse,
-// so the button label ("Parse JSON" / "Parse YAML") matches what will actually happen.
-function detectInputFormat(raw){
-  raw=(raw||'').trim();
-  if(!raw)return 'json';
-  try{JSON.parse(raw);return 'json';}catch(e){}
-  try{
-    const v=jsyaml.load(raw);
-    if(typeof v==='object'&&v!==null)return 'yaml';
-  }catch(e){}
-  return 'json';
-}
-
-function updateParseLabel(){
-  const raw=document.getElementById('jsonInput').value;
-  const fmt=detectInputFormat(raw);
-  const el=document.getElementById('btn-parse');
-  if(el)el.textContent=fmt==='yaml'?t('btn-parse-yaml'):t('btn-parse-json');
-}
-
 function parseJSON(){
-  updateParseLabel();
   const raw=document.getElementById('jsonInput').value.trim();
   const errEl=document.getElementById('parseError');
   if(!raw){errEl.textContent='';['fieldsCard','cmdCard'].forEach(id=>document.getElementById(id).style.display='none');return;}
@@ -586,24 +587,21 @@ function formatDateForFmt(d,fmt){
 
 function detectISODateTime(val){
   if(typeof val!=='string')return null;
-  const m=val.match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(\.(\d+))?(Z|[+-]\d{2}:\d{2})?$/);
+  const m=val.match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(\.(\d+))?(Z)?$/);
   if(!m)return null;
-  return {millisLen:m[8]?m[8].length:0,suffix:m[9]||''};
+  return {millisLen:m[8]?m[8].length:0,hasZ:!!m[9]};
 }
 
-// Replaces the date/time digits with the user's current local time, but keeps
-// whatever zone marker (Z, +07:00, none, etc.) the original string had —
-// untouched, exactly as-is.
 function nowLikeISO(info){
   const n=new Date();
   const pad=(v,l)=>String(v).padStart(l||2,'0');
-  let s=n.getFullYear()+'-'+pad(n.getMonth()+1)+'-'+pad(n.getDate())+'T'+pad(n.getHours())+':'+pad(n.getMinutes())+':'+pad(n.getSeconds());
+  let s=n.getUTCFullYear()+'-'+pad(n.getUTCMonth()+1)+'-'+pad(n.getUTCDate())+'T'+pad(n.getUTCHours())+':'+pad(n.getUTCMinutes())+':'+pad(n.getUTCSeconds());
   if(info.millisLen>0){
-    let ms=String(n.getMilliseconds()).padStart(3,'0');
+    let ms=String(n.getUTCMilliseconds()).padStart(3,'0');
     if(info.millisLen<3) ms=ms.slice(0,info.millisLen); else if(info.millisLen>3) ms=ms.padEnd(info.millisLen,'0');
     s+='.'+ms;
   }
-  s+=info.suffix;
+  if(info.hasZ)s+='Z';
   return s;
 }
 
@@ -642,6 +640,48 @@ function renderFields(){
   const flat=flattenObj(typeof data==='object'&&!Array.isArray(data)?data:{root:data});
   document.getElementById('fieldCount').textContent=Object.keys(flat).length+' '+t('fields');
   applyFieldFilter();
+}
+
+/* ===== Bulk "Set All" actions per detected type ===== */
+function setAllType(type){
+  if(!data)return;
+  const flat=flattenObj(typeof data==='object'&&!Array.isArray(data)?data:{root:data});
+  const incEl=document.getElementById('bulkNumInc');
+  const incAmt=incEl?(parseFloat(incEl.value)||0):0;
+  let count=0;
+
+  Object.entries(flat).forEach(([path,val])=>{
+    const rt=detectRichType(val);
+    if(rt!==type)return;
+
+    if(type==='date'){
+      setByPath(data,path,todayNum());count++;
+    } else if(type==='datetime'){
+      const info=detectISODateTime(val);
+      if(info){setByPath(data,path,nowLikeISO(info));count++;}
+    } else if(type==='number'){
+      setByPath(data,path,val+incAmt);count++;
+    } else if(type==='dateseq'){
+      const info=detectDateSeq(val);
+      if(info){
+        const newDateStr=formatDateForFmt(new Date(),info.format);
+        let newRest=info.rest;
+        if(info.trailDigits){
+          const newNum=String(parseInt(info.trailDigits,10)+incAmt).padStart(info.trailDigits.length,'0');
+          newRest=info.rest.slice(0,info.rest.length-info.trailDigits.length)+newNum;
+        }
+        setByPath(data,path,newDateStr+newRest);count++;
+      }
+    }
+  });
+
+  const fb=document.getElementById('bulkFeedback');
+  if(fb){
+    fb.textContent = count>0 ? count+t('bulk-done-'+type) : t('bulk-none');
+    fb.style.color = count>0 ? 'var(--success)' : 'var(--text3)';
+    setTimeout(()=>{fb.textContent='';},2500);
+  }
+  if(count>0){renderFields();renderOutput();}
 }
 
 /* ===== Search / filter fields ===== */

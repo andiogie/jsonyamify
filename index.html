@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>JSONify — Transform & Edit JSON Instantly</title>
+  <title>JSONYAMify — Format & Edit JSON/YAML Instantly</title>
   <meta name="description" content="Transform, edit, and format JSON/YAML values instantly in your browser. Supports nested data, flatten view, tree view, number increment, smart date+sequence detection, string replacement, and JSON↔YAML output. 100% client-side, no data leaves your browser."/>
   <meta name="keywords" content="json formatter, json editor, yaml editor, json to yaml, yaml to json, json prettify, json minify, online json tool, json viewer"/>
   <meta name="robots" content="index, follow"/>
   <meta name="author" content="Andi Putra Ogie"/>
-  <link rel="canonical" href="https://jsonyamify.andiogie.workers.dev/"/>
+  <link rel="canonical" href="https://jsonyamify.my.id/"/>
   <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
 
   <!-- ============================================================
@@ -29,26 +29,26 @@
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website"/>
-  <meta property="og:url" content="https://jsonyamify.andiogie.workers.dev/"/>
-  <meta property="og:title" content="JSONify — Transform & Edit JSON Instantly"/>
+  <meta property="og:url" content="https://jsonyamify.my.id/"/>
+  <meta property="og:title" content="JSONYAMify — Format & Edit JSON/YAML Instantly"/>
   <meta property="og:description" content="Edit, prettify, minify, and convert JSON/YAML instantly in your browser. Free, fast, and 100% client-side — your data never leaves your device."/>
-  <meta property="og:image" content="https://jsonyamify.andiogie.workers.dev/og-image.png"/>
+  <meta property="og:image" content="https://jsonyamify.my.id/og-image.png"/>
   <meta property="og:locale" content="id_ID"/>
   <meta property="og:locale:alternate" content="en_US"/>
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="JSONify — Transform & Edit JSON Instantly"/>
+  <meta name="twitter:title" content="JSONYAMify — Format & Edit JSON/YAML Instantly"/>
   <meta name="twitter:description" content="Edit, prettify, minify, and convert JSON/YAML instantly in your browser. Free, fast, and 100% client-side."/>
-  <meta name="twitter:image" content="https://jsonyamify.andiogie.workers.dev/og-image.png"/>
+  <meta name="twitter:image" content="https://jsonyamify.my.id/og-image.png"/>
 
   <!-- Structured data for SEO -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "JSONify",
-    "url": "https://jsonyamify.andiogie.workers.dev/",
+    "name": "JSONYAMify",
+    "url": "https://jsonyamify.my.id/",
     "description": "Transform, edit, and format JSON/YAML values instantly in your browser.",
     "applicationCategory": "DeveloperApplication",
     "operatingSystem": "Any",
@@ -70,8 +70,8 @@
     <div class="brand">
       <div class="brand-icon"><i class="ti ti-braces"></i></div>
       <div class="brand-text">
-        <span class="logo">JSONify</span>
-        <span class="logo-sub" id="h-sub">Transform &amp; Edit JSON Instantly</span>
+        <span class="logo">JSONYAMify</span>
+        <span class="logo-sub" id="h-sub">Format, edit &amp; konversi JSON/YAML langsung di browser</span>
       </div>
     </div>
     <div class="header-right">
@@ -149,6 +149,19 @@
         </div>
       </div>
     </div>
+    <div class="row-between" id="bulkRow" style="margin-top:-4px">
+      <span class="sec-title" id="lbl-bulk" style="font-size:12px;color:var(--text2)">Set semua per tipe:</span>
+      <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+        <button class="bsm" id="bulk-date" onclick="setAllType('date')"><i class="ti ti-calendar"></i> Tanggal &rarr; Hari ini</button>
+        <button class="bsm" id="bulk-datetime" onclick="setAllType('datetime')"><i class="ti ti-clock"></i> Datetime &rarr; Now</button>
+        <span style="display:flex;align-items:center;gap:4px">
+          <input type="number" id="bulkNumInc" value="1" class="num-inc"/>
+          <button class="bsm" id="bulk-number" onclick="setAllType('number')">&rarr; Semua Angka</button>
+        </span>
+        <button class="bsm" id="bulk-dateseq" onclick="setAllType('dateseq')"><i class="ti ti-calendar-stats" ></i> Update Semua Date+Seq</button>
+      </div>
+    </div>
+    <div id="bulkFeedback" style="font-size:11.5px;color:var(--success);min-height:16px;margin:4px 0 6px"></div>
     <div id="fieldsList"></div>
   </div>
 
@@ -180,7 +193,7 @@
 <div class="help-overlay" id="helpOverlay" onclick="if(event.target===this)closeHelp()">
   <div class="help-modal">
     <button class="icon-btn help-close" onclick="closeHelp()"><i class="ti ti-x"></i></button>
-    <h2 id="helpTitle"><i class="ti ti-help-circle"></i> Cara Penggunaan JSONify</h2>
+    <h2 id="helpTitle"><i class="ti ti-help-circle"></i> Cara Penggunaan JSONYAMify</h2>
     <div id="helpBody"></div>
   </div>
 </div>
