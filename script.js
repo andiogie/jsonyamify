@@ -30,6 +30,7 @@ const T={
     'err-notfound':' tidak ditemukan.',
     'err-notnum':' bukan angka.',
     'err-neednum':'Nilai harus angka.',
+    'err-needbool':'Nilai harus "true" atau "false".',
     'err-cmd':'Perintah tidak dikenali. Gunakan dot notation seperti: tambah 1 ke order.summary.totalItems',
     'ph-cmd':'Ketik perintah...',
     'ph-search':'Cari key atau value...',
@@ -86,6 +87,7 @@ const T={
     'err-notfound':' not found.',
     'err-notnum':' is not a number.',
     'err-neednum':'Value must be a number.',
+    'err-needbool':'Value must be "true" or "false".',
     'err-cmd':'Command not recognized. Use dot notation like: add 1 to order.summary.totalItems',
     'ph-cmd':'Type a command...',
     'ph-search':'Search key or value...',
@@ -196,6 +198,7 @@ const SAMPLES={
     data:{
       "order":{
         "id":"ORD-20260619-0042",
+        "invoiceCode":"20260619-0042",
         "status":"processing",
         "createdAt":"2026-06-19T08:30:00Z",
         "updatedAt":"2026-06-19T09:15:42Z",
@@ -1003,6 +1006,10 @@ function runCmd(){
     if(type==='number'||type==='date'){
       const n=parseFloat(newValRaw);if(isNaN(n)){errEl.textContent=t('err-neednum');return;}
       setByPath(data,path,n);
+    } else if(type==='boolean'){
+      const lc=newValRaw.toLowerCase();
+      if(lc!=='true'&&lc!=='false'){errEl.textContent=t('err-needbool');return;}
+      setByPath(data,path,lc==='true');
     } else {setByPath(data,path,newValRaw);}
     renderFields();renderOutput();document.getElementById('cmdInput').value='';return;
   }
