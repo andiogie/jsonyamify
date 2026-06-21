@@ -33,9 +33,9 @@ const T={
     'err-cmd':'Perintah tidak dikenali. Gunakan dot notation seperti: tambah 1 ke order.summary.totalItems',
     'ph-cmd':'Ketik perintah...',
     'ph-search':'Cari key atau value...',
-    'footer-issue-label':'Ada masalah? Kirim email:',
-    'issue-subject':'[JSONYAMify] Laporan Masalah',
-    'issue-body':'Halo,\n\nDeskripsi masalah:\n\n\nLangkah reproduksi:\n1. \n2. \n\nHasil yang diharapkan:\n\n\nHasil yang terjadi:\n\n',
+    'footer-issue-label':'Ada bug, saran, atau mau bantu donasi? Email:',
+    'issue-subject':'[JSONYAMify] Pesan dari Pengguna',
+    'issue-body':'Halo,\n\nIni saya mau sampaikan (hapus bagian yang gak relevan):\n\n--- 🐞 LAPOR BUG ---\nDeskripsi masalah:\n\nLangkah reproduksi:\n1. \n2. \n\nHasil yang diharapkan:\n\nHasil yang terjadi:\n\n\n--- 💡 KRITIK & SARAN ---\n\n\n--- 💸 DONASI ---\nSaya mau bantu donasi lewat: (Buy Me a Coffee / Trakteer / lainnya)\n',
     'tt-upload':'Upload file JSON/YAML','tt-download':'Download','tt-copy':'Copy','tt-minify':'Minify','tt-prettify':'Prettify','tt-help':'Cara penggunaan',
     'opt-group-json':'Contoh JSON','opt-group-yaml':'Contoh YAML',
     'opt-json1':'E-commerce Order','opt-json2':'User Profile & Subscription',
@@ -89,9 +89,9 @@ const T={
     'err-cmd':'Command not recognized. Use dot notation like: add 1 to order.summary.totalItems',
     'ph-cmd':'Type a command...',
     'ph-search':'Search key or value...',
-    'footer-issue-label':'Found an issue? Email:',
-    'issue-subject':'[JSONYAMify] Issue Report',
-    'issue-body':'Hi,\n\nIssue description:\n\n\nSteps to reproduce:\n1. \n2. \n\nExpected result:\n\n\nActual result:\n\n',
+    'footer-issue-label':'Found a bug, have feedback, or want to support us? Email:',
+    'issue-subject':'[JSONYAMify] Message from a User',
+    'issue-body':'Hi,\n\nHere\'s what I want to share (remove the section that doesn\'t apply):\n\n--- 🐞 BUG REPORT ---\nIssue description:\n\nSteps to reproduce:\n1. \n2. \n\nExpected result:\n\nActual result:\n\n\n--- 💡 FEEDBACK / SUGGESTION ---\n\n\n--- 💸 DONATION ---\nI\'d like to support via: (Buy Me a Coffee / Ko-fi / other)\n',
     'tt-upload':'Upload JSON/YAML file','tt-download':'Download','tt-copy':'Copy','tt-minify':'Minify','tt-prettify':'Prettify','tt-help':'How to use',
     'opt-group-json':'JSON Examples','opt-group-yaml':'YAML Examples',
     'opt-json1':'E-commerce Order','opt-json2':'User Profile & Subscription',
@@ -810,6 +810,20 @@ function renderFlat(list){
       };
       acts.appendChild(inp);acts.appendChild(b);
     }
+    if(type==='boolean'){
+      const b=document.createElement('button');b.className='bsm';
+      b.textContent='\u2192 '+(!val);
+      b.onclick=()=>{
+        const cur=getByPath(data,path);
+        const nv=!cur;
+        setByPath(data,path,nv);
+        const el=document.getElementById(safeId(path));
+        if(el){el.textContent=String(nv);el.title=String(nv);el.style.color='var(--success)';setTimeout(()=>{el.style.color='';},600);}
+        b.textContent='\u2192 '+(!nv);
+        renderOutput();
+      };
+      acts.appendChild(b);
+    }
 
     row.appendChild(keyEl);row.appendChild(valEl);row.appendChild(badge);row.appendChild(acts);
     list.appendChild(row);
@@ -929,6 +943,19 @@ function renderTree(container,obj,path,depth){
           renderOutput();
         };
         acts.appendChild(inp);acts.appendChild(b);
+      }
+      if(type==='boolean'){
+        const b=document.createElement('button');b.className='bsm';
+        b.textContent='\u2192 '+(!val);
+        b.onclick=()=>{
+          const cur=getByPath(data,fullPath);
+          const nv=!cur;
+          setByPath(data,fullPath,nv);
+          valEl.textContent=String(nv);valEl.style.color='var(--success)';setTimeout(()=>{valEl.style.color='';},600);
+          b.textContent='\u2192 '+(!nv);
+          renderOutput();
+        };
+        acts.appendChild(b);
       }
       rowEl.appendChild(acts);
     }
