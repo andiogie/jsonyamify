@@ -568,15 +568,23 @@ function isValidDateForFmt(str,fmt){
 
 function detectDateSeq(val){
   if(typeof val!=='string'||val.length<8)return null;
-  const head=val.slice(0,8);
-  if(!/^\d{8}$/.test(head))return null;
   const fmts=['YYYYMMDD','DDMMYYYY','MMDDYYYY'];
-  let fmt=null;
-  for(const f of fmts){ if(isValidDateForFmt(head,f)){fmt=f;break;} }
-  if(!fmt)return null;
-  const rest=val.slice(8);
-  const trailMatch=val.match(/(\d+)$/);
-  return {head,rest,format:fmt,trailDigits:trailMatch?trailMatch[1]:null};
+  const digitRunRe=/\d+/g;
+  let m;
+  while((m=digitRunRe.exec(val))!==null){
+    const run=m[0];
+    if(run.length<8)continue;
+    const dateStart=m.index;
+    const head=run.slice(0,8);
+    let fmt=null;
+    for(const f of fmts){ if(isValidDateForFmt(head,f)){fmt=f;break;} }
+    if(!fmt)continue;
+    const prefix=val.slice(0,dateStart);
+    const rest=val.slice(dateStart+8);
+    const trailMatch=rest.match(/(\d+)$/);
+    return {head,prefix,rest,format:fmt,trailDigits:trailMatch?trailMatch[1]:null};
+  }
+  return null;
 }
 
 function formatDateForFmt(d,fmt){
@@ -673,7 +681,7 @@ function setAllType(type){
           const newNum=String(parseInt(info.trailDigits,10)+incAmt).padStart(info.trailDigits.length,'0');
           newRest=info.rest.slice(0,info.rest.length-info.trailDigits.length)+newNum;
         }
-        setByPath(data,path,newDateStr+newRest);count++;
+        setByPath(data,path,info.prefix+newDateStr+newRest);count++;
       }
     }
   });
@@ -792,7 +800,7 @@ function renderFlat(list){
           const newNum=String(parseInt(curInfo.trailDigits,10)+incAmt).padStart(curInfo.trailDigits.length,'0');
           newRest=curInfo.rest.slice(0,curInfo.rest.length-curInfo.trailDigits.length)+newNum;
         }
-        const newVal=newDateStr+newRest;
+        const newVal=curInfo.prefix+newDateStr+newRest;
         setByPath(data,path,newVal);
         const el=document.getElementById(safeId(path));
         if(el){el.textContent=newVal;el.title=newVal;el.style.color='var(--success)';setTimeout(()=>{el.style.color='';},600);}
@@ -930,7 +938,7 @@ function renderTree(container,obj,path,depth){
             const newNum=String(parseInt(curInfo.trailDigits,10)+incAmt).padStart(curInfo.trailDigits.length,'0');
             newRest=curInfo.rest.slice(0,curInfo.rest.length-curInfo.trailDigits.length)+newNum;
           }
-          const newVal=newDateStr+newRest;
+          const newVal=curInfo.prefix+newDateStr+newRest;
           setByPath(data,fullPath,newVal);
           valEl.textContent=newVal;valEl.style.color='var(--success)';setTimeout(()=>{valEl.style.color='';},600);
           renderOutput();
