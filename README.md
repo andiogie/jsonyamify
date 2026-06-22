@@ -1,4 +1,4 @@
-# JSONify
+# JSONYAMify
 
 Transform, edit, and format **JSON / YAML** instantly — right in your browser. No backend, no data upload, no tracking. Everything runs 100% client-side.
 
@@ -9,7 +9,7 @@ Transform, edit, and format **JSON / YAML** instantly — right in your browser.
 ## 🇮🇩 Bahasa Indonesia
 
 ### Apa ini?
-JSONify adalah tool web ringan untuk **melihat, mengedit, dan mengubah format** data JSON/YAML secara instan. Cocok untuk developer, QA, atau siapa pun yang sering bongkar-pasang payload API, file konfigurasi, atau data uji coba.
+JSONYAMify adalah tool web ringan untuk **melihat, mengedit, dan mengubah format** data JSON/YAML secara instan. Cocok untuk developer, QA, atau siapa pun yang sering bongkar-pasang payload API, file konfigurasi, atau data uji coba.
 
 ### ✨ Fitur
 - **Parse JSON & YAML** — input otomatis dideteksi, tidak perlu pilih format manual.
@@ -53,20 +53,20 @@ Tidak perlu build tool atau server backend. Cukup:
 ```
 CSS dan JS dipisah dari HTML agar lebih mudah dirawat, di-debug, dan di-cache oleh browser.
 
-> ⚠️ **Penting:** ganti semua placeholder `https://jsonify.example.com/` di `index.html`, `about.html`, `faq.html`, `privacy.html`, `sitemap.xml`, dan `robots.txt` dengan domain asli kamu setelah deploy (misalnya `https://namakamu.pages.dev/`). Ganti juga `ca-pub-XXXXXXXXXXXXXXXX` di `index.html` dan `pub-0000000000000000` di `ads.txt` dengan Publisher ID asli setelah akun AdSense kamu disetujui.
+> ⚠️ **Penting:** ganti semua placeholder `https://JSONYAMify.example.com/` di `index.html`, `about.html`, `faq.html`, `privacy.html`, `sitemap.xml`, dan `robots.txt` dengan domain asli kamu setelah deploy (misalnya `https://namakamu.pages.dev/`). Ganti juga `ca-pub-XXXXXXXXXXXXXXXX` di `index.html` dan `pub-0000000000000000` di `ads.txt` dengan Publisher ID asli setelah akun AdSense kamu disetujui.
 
 ### 🤝 Kontribusi
 Pull request terbuka untuk siapa saja. Untuk laporan bug/saran fitur, kirim email lewat tautan di footer aplikasi atau buka issue di repo ini.
 
 ### ⚠️ Catatan Privasi
-JSONify tidak mengirim data apa pun ke server. Namun untuk data sensitif (PII, kredensial, data finansial, dll), tetap disarankan untuk **tidak** menempelkannya ke tool publik mana pun kecuali Anda yakin host/deploy sendiri secara privat.
+JSONYAMify tidak mengirim data apa pun ke server. Namun untuk data sensitif (PII, kredensial, data finansial, dll), tetap disarankan untuk **tidak** menempelkannya ke tool publik mana pun kecuali Anda yakin host/deploy sendiri secara privat.
 
 ---
 
 ## 🇬🇧 English
 
 ### What is this?
-JSONify is a lightweight web tool to **view, edit, and convert** JSON/YAML data instantly. Useful for developers, QA engineers, or anyone who frequently inspects API payloads, config files, or test fixtures.
+JSONYAMify is a lightweight web tool to **view, edit, and convert** JSON/YAML data instantly. Useful for developers, QA engineers, or anyone who frequently inspects API payloads, config files, or test fixtures.
 
 ### ✨ Features
 - **Parse JSON & YAML** — input format is auto-detected.
@@ -110,13 +110,13 @@ No build step or backend required.
 ```
 CSS and JS are kept separate from the HTML for easier maintenance, debugging, and browser caching.
 
-> ⚠️ **Important:** replace every `https://jsonify.example.com/` placeholder in `index.html`, `about.html`, `faq.html`, `privacy.html`, `sitemap.xml`, and `robots.txt` with your real domain after deploying (e.g. `https://yourname.pages.dev/`). Also replace `ca-pub-XXXXXXXXXXXXXXXX` in `index.html` and `pub-0000000000000000` in `ads.txt` with your real Publisher ID once your AdSense account is approved.
+> ⚠️ **Important:** replace every `https://JSONYAMify.example.com/` placeholder in `index.html`, `about.html`, `faq.html`, `privacy.html`, `sitemap.xml`, and `robots.txt` with your real domain after deploying (e.g. `https://yourname.pages.dev/`). Also replace `ca-pub-XXXXXXXXXXXXXXXX` in `index.html` and `pub-0000000000000000` in `ads.txt` with your real Publisher ID once your AdSense account is approved.
 
 ### 🤝 Contributing
 Pull requests are welcome. For bug reports or feature requests, email via the link in the app footer or open an issue on this repo.
 
 ### ⚠️ Privacy Note
-JSONify never transmits your data to a server. That said, avoid pasting highly sensitive data (PII, credentials, financial records, etc.) into any public-facing tool unless you control the deployment yourself.
+JSONYAMify never transmits your data to a server. That said, avoid pasting highly sensitive data (PII, credentials, financial records, etc.) into any public-facing tool unless you control the deployment yourself.
 
 ---
 
