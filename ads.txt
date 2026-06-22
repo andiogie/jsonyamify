@@ -1,11 +1,11 @@
 # ads.txt
 # PENTING / IMPORTANT:
 # Baris di bawah ini contoh/placeholder. Setelah akun Google AdSense kamu
-# disetujui, ganti "pub-0000000000000000" dengan Publisher ID ASLI kamu
+# disetujui, ganti "pub-9189694086463077" dengan Publisher ID ASLI kamu
 # (format: pub-XXXXXXXXXXXXXXXX, tanpa "ca-" di depan untuk file ini).
 # Kamu bisa lihat ID ini di dashboard AdSense > Account > Account information.
 #
 # The line below is a placeholder. After your Google AdSense account is
-# approved, replace "pub-0000000000000000" with your REAL Publisher ID.
+# approved, replace "pub-9189694086463077" with your REAL Publisher ID.
 
-google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
+google.com, pub-9189694086463077, DIRECT, f08c47fec0942fa0
