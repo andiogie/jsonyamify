@@ -1,0 +1,125 @@
+/* ============================================================
+   blog-assets/blog.css
+   Shared styling for blog listing + article pages.
+   Relies on CSS variables already defined in /css/style.css
+   (--bg, --bg2, --text, --text2, --text3, --border, --border2, etc.)
+   ============================================================ */
+
+.by-bg-soft{background:var(--bg2)}
+.by-border{border-color:var(--border)}
+
+body{background:var(--bg);color:var(--text)}
+
+header{
+  max-width:880px;margin:0 auto;padding:1.25rem 1.5rem 1rem;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;
+  border-bottom:0.5px solid var(--border);
+}
+header > a{font-size:18px;font-weight:700;color:var(--text);text-decoration:none;letter-spacing:-0.2px}
+header nav{display:flex;gap:16px;font-size:13.5px}
+header nav a{color:var(--text2);text-decoration:none}
+header nav a:hover{color:var(--text);text-decoration:underline}
+
+.by-lang-switch{display:flex;gap:3px}
+.by-lang-switch button{
+  font-size:12px;padding:4px 10px;border:0.5px solid var(--border2);border-radius:6px;
+  background:transparent;color:var(--text2);cursor:pointer;
+}
+.by-lang-switch button.on{color:var(--text);font-weight:600;background:var(--bg2)}
+
+main.by-article{max-width:760px;margin:0 auto;padding:1.75rem 1.5rem 3rem}
+main.by-list{max-width:880px;margin:0 auto;padding:1.75rem 1.5rem 3rem}
+
+.by-breadcrumb{font-size:12.5px;color:var(--text3);margin-bottom:1.25rem}
+.by-breadcrumb a{color:var(--text2);text-decoration:none}
+.by-breadcrumb a:hover{text-decoration:underline}
+
+.by-lang-en{display:none}
+html.lang-en .by-lang-id{display:none}
+html.lang-en .by-lang-en{display:block}
+html.lang-id .by-lang-id{display:block}
+html.lang-id .by-lang-en{display:none}
+.by-lang-id,.by-lang-en{animation:by-fade .15s ease}
+@keyframes by-fade{from{opacity:0}to{opacity:1}}
+
+main.by-article h1{font-size:26px;line-height:1.3;margin-bottom:.4rem;color:var(--text)}
+main.by-article .by-meta{font-size:12.5px;color:var(--text3);margin-bottom:1.75rem}
+main.by-article h2{font-size:18px;margin:1.75rem 0 .65rem;color:var(--text)}
+main.by-article p{font-size:14.5px;line-height:1.8;color:var(--text2);margin-bottom:.85rem}
+main.by-article ul,main.by-article ol{margin:.3rem 0 1.1rem 1.25rem;font-size:14.5px;line-height:1.85;color:var(--text2)}
+main.by-article li{margin-bottom:.35rem}
+main.by-article li strong{color:var(--text)}
+main.by-article code{
+  font-family:ui-monospace,'Cascadia Code','Fira Code',monospace;font-size:12.5px;
+  background:var(--bg2);padding:1px 6px;border-radius:5px;color:var(--text);
+}
+main.by-article pre{
+  background:var(--bg2);border:0.5px solid var(--border);border-radius:10px;
+  padding:14px 16px;overflow-x:auto;margin-bottom:1.1rem;
+}
+main.by-article pre code{background:none;padding:0;font-size:12.5px;line-height:1.7}
+main.by-article a{color:var(--text);font-weight:500;text-decoration:underline;text-decoration-color:var(--border2)}
+main.by-article a:hover{opacity:.75}
+main.by-article table{font-size:13.5px;color:var(--text2)}
+main.by-article table th{color:var(--text)}
+
+.by-callout{
+  background:var(--bg2);border:0.5px solid var(--border);border-left:3px solid #6366f1;
+  border-radius:10px;padding:14px 16px;font-size:14px;line-height:1.7;color:var(--text2);
+  margin:1.5rem 0;
+}
+.by-callout a{color:var(--text)}
+
+.by-cta{
+  display:inline-flex;align-items:center;gap:6px;margin:.5rem 0 2rem;
+  font-size:14px;font-weight:600;padding:10px 18px;border-radius:10px;
+  background:var(--text);color:var(--bg);text-decoration:none !important;
+}
+.by-cta:hover{opacity:.85}
+
+.by-related{
+  border-top:0.5px solid var(--border);padding-top:1.25rem;margin-top:1.5rem;
+}
+.by-related h2{font-size:15px;margin-bottom:.5rem}
+.by-related ul{margin:0 0 0 1.1rem;font-size:14px}
+.by-related li{margin-bottom:.3rem}
+
+.by-faq-item{
+  border-bottom:0.5px solid var(--border);padding:1.1rem 0;
+}
+.by-faq-item:first-of-type{border-top:0.5px solid var(--border);margin-top:1.25rem}
+.by-faq-item h3{font-size:15px;margin-bottom:.4rem;color:var(--text)}
+.by-faq-item p{font-size:14px;line-height:1.75;color:var(--text2);margin:0}
+
+main.by-article h2:first-of-type,main h2:first-of-type{margin-top:1.25rem}
+
+/* === Blog listing page (blog/index.html) === */
+.by-list h1{font-size:26px;margin-bottom:.4rem;color:var(--text)}
+.by-list .by-intro{font-size:14.5px;color:var(--text2);line-height:1.75;margin-bottom:1.75rem;max-width:640px}
+.by-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.by-card{
+  display:block;border:0.5px solid var(--border);border-radius:12px;padding:1.1rem 1.2rem;
+  text-decoration:none;background:var(--bg);transition:border-color .15s,transform .1s;
+}
+.by-card:hover{border-color:var(--border2);transform:translateY(-1px)}
+.by-card h3{font-size:15px;color:var(--text);margin-bottom:.45rem;line-height:1.4}
+.by-card p{font-size:13px;color:var(--text2);line-height:1.65;margin:0}
+.by-card .by-tag{
+  display:inline-block;font-size:10.5px;font-weight:600;color:var(--badge-num-c,#0C447C);
+  background:var(--badge-num-bg,#E6F1FB);padding:2px 8px;border-radius:99px;margin-bottom:.6rem;
+}
+
+footer{
+  max-width:880px;margin:1.5rem auto 0;padding:1.5rem 1.5rem 2.5rem;
+  font-size:12.5px;color:var(--text3);border-top:0.5px solid var(--border);
+}
+footer a{color:var(--text2);text-decoration:none;font-weight:500}
+footer a:hover{color:var(--text);text-decoration:underline}
+
+@media(max-width:600px){
+  header nav{gap:10px;font-size:12.5px}
+  main.by-article{padding:1.25rem 1.1rem 2.5rem}
+  main.by-list{padding:1.25rem 1.1rem 2.5rem}
+  main.by-article h1{font-size:21px}
+  .by-grid{grid-template-columns:1fr}
+}

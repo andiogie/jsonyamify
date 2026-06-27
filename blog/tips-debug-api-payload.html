@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Tips Debug API Payload JSON dengan Cepat | JSONYAMify Blog</title>
+<meta name="description" content="Strategi praktis untuk men-debug response/request API berformat JSON yang besar dan kompleks, termasuk cara menemukan field bermasalah lebih cepat.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://jsonyamify.my.id/blog/tips-debug-api-payload.html">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../css/style.css?v=20260627">
+<link rel="stylesheet" href="../blog-assets/blog.css?v=20260627">
+<script defer src="../blog-assets/lang.js?v=20260627"></script>
+</head>
+<body>
+<header>
+  <a href="../index.html">JSONYAMify</a>
+  <nav><a href="../about.html">Tentang</a><a href="../faq.html">FAQ</a><a href="index.html">Blog</a><a href="../privacy.html">Privacy</a></nav>
+  <div class="by-lang-switch"><button data-lang="id">ID</button><button data-lang="en">EN</button></div>
+</header>
+
+<main class="by-article">
+  <p class="by-breadcrumb"><a href="../index.html">Home</a> / <a href="index.html">Blog</a> / Debug API Payload</p>
+
+  <div class="by-lang-id">
+    <h1>Tips Debug API Payload JSON dengan Cepat</h1>
+    <p class="by-meta">Oleh Andi Putra Ogie · Update: Juni 2026 · 5 menit baca</p>
+
+    <p>Payload API di production sering berukuran ratusan field bersarang. Berikut strategi supaya proses debugging tidak menghabiskan waktu berjam-jam.</p>
+
+    <h2>1. Jangan Debug dari Console Log Mentah</h2>
+    <p><code>console.log(JSON.stringify(payload))</code> menghasilkan satu baris panjang yang melelahkan mata. Copy hasilnya ke tool formatter seperti <a href="../index.html">JSONYAMify</a> agar terindentasi rapi dan mudah dipindai.</p>
+
+    <h2>2. Gunakan Flatten View untuk Cari Field Tertentu</h2>
+    <p>Kalau kamu sedang mencari kenapa <code>order.summary.totalItems</code> bernilai salah, jangan scroll manual lewat tree bersarang. Mode Flatten menampilkan semua path key dalam format dot notation rata, jadi kamu bisa Ctrl+F langsung ke nama field-nya.</p>
+
+    <h2>3. Bandingkan Dua Payload Secara Visual</h2>
+    <p>Saat membandingkan response "yang seharusnya" vs "yang aktual diterima", format dulu kedua-duanya dengan mode Pretty yang sama supaya perbedaan strukturnya terlihat jelas — alih-alih membandingkan dua blob minified yang sulit dibaca.</p>
+
+    <h2>4. Periksa Tipe Data, Bukan Cuma Nilai</h2>
+    <p>Bug klasik: field <code>"price": "10000"</code> (string) vs <code>"price": 10000</code> (number) terlihat sama secara visual tapi berperilaku sangat berbeda di kode (misalnya saat melakukan operasi matematika atau perbandingan). Tool dengan deteksi tipe otomatis membantu menangkap perbedaan ini secepatnya.</p>
+
+    <h2>5. Validasi Sebelum Menyalahkan Backend</h2>
+    <p>Sebelum melempar bug ke tim backend, pastikan payload yang kamu terima benar-benar valid JSON. Banyak kasus "API error" sebenarnya cuma JSON yang corrupt karena masalah encoding atau truncated response.</p>
+
+    <div class="by-callout">💡 Workflow cepat: paste payload mentah → Parse → cek error parsing kalau ada → lihat di Tree/Flatten View → cari field bermasalah → fix di kode kamu. Semua dalam satu tab browser, tanpa install Postman atau tool tambahan.</div>
+
+    <a class="by-cta" href="../index.html">🔧 Debug Payload JSON Kamu Sekarang</a>
+
+    <div class="by-related">
+      <h2>Baca Juga</h2>
+      <ul>
+        <li><a href="cara-format-json-online.html">Cara Format JSON Online</a></li>
+        <li><a href="kesalahan-umum-json.html">10 Kesalahan Umum Saat Menulis JSON</a></li>
+        <li><a href="json-schema-validation.html">Apa itu JSON Schema?</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="by-lang-en">
+    <h1>Tips for Debugging JSON API Payloads Fast</h1>
+    <p class="by-meta">By Andi Putra Ogie · Updated: June 2026 · 5 min read</p>
+
+    <p>Production API payloads often have hundreds of nested fields. Here's how to debug them without burning hours.</p>
+
+    <h2>1. Don't Debug From Raw Console Logs</h2>
+    <p><code>console.log(JSON.stringify(payload))</code> produces one exhausting long line. Copy it into a formatter tool like <a href="../index.html">JSONYAMify</a> to get clean indentation that's easy to scan.</p>
+
+    <h2>2. Use Flatten View to Find a Specific Field</h2>
+    <p>If you're hunting for why <code>order.summary.totalItems</code> has the wrong value, don't scroll manually through a nested tree. Flatten mode lists every key path in flat dot notation, so you can Ctrl+F straight to the field name.</p>
+
+    <h2>3. Visually Diff Two Payloads</h2>
+    <p>When comparing "expected" vs "actually received" responses, format both with the same Pretty mode first so structural differences stand out — instead of comparing two unreadable minified blobs.</p>
+
+    <h2>4. Check Data Types, Not Just Values</h2>
+    <p>A classic bug: <code>"price": "10000"</code> (string) vs <code>"price": 10000</code> (number) look identical visually but behave very differently in code (e.g. during math operations or comparisons). A tool with automatic type detection helps catch this quickly.</p>
+
+    <h2>5. Validate Before Blaming the Backend</h2>
+    <p>Before filing a bug against the backend team, confirm the payload you received is actually valid JSON. Many "API errors" are really just corrupted JSON caused by encoding issues or a truncated response.</p>
+
+    <div class="by-callout">💡 Fast workflow: paste raw payload → Parse → check for parse errors if any → inspect Tree/Flatten View → find the problem field → fix it in your code. All in one browser tab, no Postman or extra tools required.</div>
+
+    <a class="by-cta" href="../index.html">🔧 Debug Your JSON Payload Now</a>
+
+    <div class="by-related">
+      <h2>Read Also</h2>
+      <ul>
+        <li><a href="cara-format-json-online.html">How to Format JSON Online</a></li>
+        <li><a href="kesalahan-umum-json.html">10 Common JSON Mistakes</a></li>
+        <li><a href="json-schema-validation.html">What is JSON Schema?</a></li>
+      </ul>
+    </div>
+  </div>
+</main>
+
+<footer><p>© 2026 — by <a href="https://andiogie.vercel.app/">Andi Putra Ogie</a> · <a href="../about.html">About</a> · <a href="../faq.html">FAQ</a> · <a href="../privacy.html">Privacy Policy</a></p></footer>
+</body>
+</html>

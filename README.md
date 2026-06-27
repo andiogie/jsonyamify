@@ -39,19 +39,36 @@ Tidak perlu build tool atau server backend. Cukup:
 ### 📁 Struktur File
 ```
 .
-├── index.html      # markup halaman utama
-├── about.html      # halaman Tentang
-├── faq.html        # halaman FAQ (JSON vs YAML, dll)
-├── privacy.html    # halaman kebijakan privasi
-├── style.css       # semua styling
-├── script.js       # semua logika aplikasi
-├── ads.txt         # verifikasi Google AdSense (isi Publisher ID setelah disetujui)
-├── favicon.svg     # ikon situs
-├── robots.txt      # instruksi untuk crawler search engine
-├── sitemap.xml     # daftar halaman untuk Google Search Console
+├── index.html            # markup halaman utama (tool)
+├── about.html            # halaman Tentang
+├── faq.html              # halaman FAQ (JSON vs YAML, dll)
+├── privacy.html          # halaman kebijakan privasi
+├── ads.txt               # verifikasi Google AdSense (isi Publisher ID setelah disetujui)
+├── favicon.svg           # ikon situs
+├── robots.txt            # instruksi untuk crawler search engine
+├── sitemap.xml           # daftar halaman untuk Google Search Console
+├── css/
+│   └── style.css         # semua styling tool utama
+├── js/
+│   └── script.js         # semua logika aplikasi tool utama
+├── blog-assets/
+│   ├── blog.css          # styling khusus halaman blog & FAQ
+│   └── lang.js           # toggle bahasa ID/EN di blog & FAQ
+├── blog/
+│   ├── index.html        # daftar/listing semua artikel blog
+│   ├── apa-itu-json.html
+│   ├── apa-itu-yaml.html
+│   ├── json-vs-yaml.html
+│   ├── json-untuk-pemula.html
+│   ├── kesalahan-umum-json.html
+│   ├── json-schema-validation.html
+│   ├── konversi-json-yaml.html
+│   ├── yaml-devops.html
+│   ├── tips-debug-api-payload.html
+│   └── cara-format-json-online.html
 └── README.md
 ```
-CSS dan JS dipisah dari HTML agar lebih mudah dirawat, di-debug, dan di-cache oleh browser.
+CSS dan JS dipisah dari HTML (folder `css/` dan `js/`), serta artikel blog dipisah ke folder `blog/` dengan asetnya sendiri di `blog-assets/`, agar lebih mudah dirawat, di-debug, dan di-cache oleh browser.
 
 > ⚠️ **Penting:** ganti semua placeholder `https://JSONYAMify.example.com/` di `index.html`, `about.html`, `faq.html`, `privacy.html`, `sitemap.xml`, dan `robots.txt` dengan domain asli kamu setelah deploy (misalnya `https://namakamu.pages.dev/`). Ganti juga `ca-pub-XXXXXXXXXXXXXXXX` di `index.html` dan `pub-0000000000000000` di `ads.txt` dengan Publisher ID asli setelah akun AdSense kamu disetujui.
 
@@ -96,19 +113,36 @@ No build step or backend required.
 ### 📁 File Structure
 ```
 .
-├── index.html      # main page markup
-├── about.html      # About page
-├── faq.html        # FAQ page (JSON vs YAML, etc.)
-├── privacy.html    # privacy policy page
-├── style.css       # all styling
-├── script.js       # all application logic
-├── ads.txt         # Google AdSense verification (fill in Publisher ID once approved)
-├── favicon.svg     # site icon
-├── robots.txt      # search engine crawler instructions
-├── sitemap.xml     # page list for Google Search Console
+├── index.html            # main tool page markup
+├── about.html            # About page
+├── faq.html              # FAQ page (JSON vs YAML, etc.)
+├── privacy.html          # privacy policy page
+├── ads.txt               # Google AdSense verification (fill in Publisher ID once approved)
+├── favicon.svg           # site icon
+├── robots.txt            # search engine crawler instructions
+├── sitemap.xml           # page list for Google Search Console
+├── css/
+│   └── style.css         # all styling for the main tool
+├── js/
+│   └── script.js         # all application logic for the main tool
+├── blog-assets/
+│   ├── blog.css           # styling for blog & FAQ pages
+│   └── lang.js             # ID/EN language toggle for blog & FAQ
+├── blog/
+│   ├── index.html         # blog listing page
+│   ├── apa-itu-json.html
+│   ├── apa-itu-yaml.html
+│   ├── json-vs-yaml.html
+│   ├── json-untuk-pemula.html
+│   ├── kesalahan-umum-json.html
+│   ├── json-schema-validation.html
+│   ├── konversi-json-yaml.html
+│   ├── yaml-devops.html
+│   ├── tips-debug-api-payload.html
+│   └── cara-format-json-online.html
 └── README.md
 ```
-CSS and JS are kept separate from the HTML for easier maintenance, debugging, and browser caching.
+CSS and JS live in their own `css/` and `js/` folders, and blog articles live in `blog/` with their own assets in `blog-assets/`, for easier maintenance, debugging, and browser caching.
 
 > ⚠️ **Important:** replace every `https://JSONYAMify.example.com/` placeholder in `index.html`, `about.html`, `faq.html`, `privacy.html`, `sitemap.xml`, and `robots.txt` with your real domain after deploying (e.g. `https://yourname.pages.dev/`). Also replace `ca-pub-XXXXXXXXXXXXXXXX` in `index.html` and `pub-0000000000000000` in `ads.txt` with your real Publisher ID once your AdSense account is approved.
 

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Apa itu JSON? Panduan Lengkap untuk Pemula | JSONYAMify Blog</title>
+<meta name="description" content="Penjelasan lengkap apa itu JSON, struktur datanya, contoh penggunaan, dan kapan sebaiknya dipakai. Cocok untuk pemula yang baru belajar API atau web development.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://jsonyamify.my.id/blog/apa-itu-json.html">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../css/style.css?v=20260627">
+<link rel="stylesheet" href="../blog-assets/blog.css?v=20260627">
+<script defer src="../blog-assets/lang.js?v=20260627"></script>
+</head>
+<body>
+<header>
+  <a href="../index.html">JSONYAMify</a>
+  <nav>
+    <a href="../about.html">Tentang</a>
+    <a href="../faq.html">FAQ</a>
+    <a href="index.html">Blog</a>
+    <a href="../privacy.html">Privacy</a>
+  </nav>
+  <div class="by-lang-switch">
+    <button data-lang="id">ID</button>
+    <button data-lang="en">EN</button>
+  </div>
+</header>
+
+<main class="by-article">
+  <p class="by-breadcrumb"><a href="../index.html">Home</a> / <a href="index.html">Blog</a> / Apa itu JSON?</p>
+
+  <div class="by-lang-id">
+    <h1>Apa itu JSON? Panduan Lengkap untuk Pemula</h1>
+    <p class="by-meta">Dipublikasikan oleh Andi Putra Ogie · Update terakhir: Juni 2026 · 6 menit baca</p>
+
+    <p>JSON (JavaScript Object Notation) adalah format pertukaran data berbasis teks yang ringan, mudah dibaca manusia, dan mudah diproses oleh mesin. Hampir semua API web modern — dari REST API e-commerce sampai webhook pembayaran — menggunakan JSON sebagai format data utamanya.</p>
+
+    <h2>Struktur Dasar JSON</h2>
+    <p>JSON dibangun dari dua struktur utama: <strong>object</strong> (kumpulan pasangan key-value, ditulis dengan kurung kurawal <code>{}</code>) dan <strong>array</strong> (daftar nilai berurutan, ditulis dengan kurung siku <code>[]</code>). Berikut contoh sederhana:</p>
+    <pre><code>{
+  "nama": "Budi Santoso",
+  "umur": 28,
+  "aktif": true,
+  "hobi": ["coding", "membaca", "futsal"],
+  "alamat": {
+    "kota": "Jakarta",
+    "kodePos": "12345"
+  }
+}</code></pre>
+
+    <h2>Tipe Data yang Didukung JSON</h2>
+    <ul>
+      <li><strong>String</strong> — teks, selalu diapit tanda kutip dua <code>"..."</code></li>
+      <li><strong>Number</strong> — angka, bisa bulat atau desimal, tanpa tanda kutip</li>
+      <li><strong>Boolean</strong> — <code>true</code> atau <code>false</code></li>
+      <li><strong>Null</strong> — nilai kosong/tidak ada</li>
+      <li><strong>Object</strong> — kumpulan key-value bersarang</li>
+      <li><strong>Array</strong> — daftar nilai, bisa campur tipe</li>
+    </ul>
+
+    <h2>Kenapa JSON Begitu Populer?</h2>
+    <p>Tiga alasan utama: pertama, sintaksnya ringkas dan mudah dibaca dibanding XML. Kedua, hampir semua bahasa pemrograman punya parser JSON built-in (JavaScript, Python, PHP, Java, Go, dll). Ketiga, JSON native cocok dengan JavaScript karena strukturnya identik dengan object literal JS, sehingga sangat efisien dipakai di aplikasi web dan mobile.</p>
+
+    <h2>Kesalahan Umum saat Menulis JSON</h2>
+    <ol>
+      <li>Lupa tanda kutip dua pada key — JSON wajib <code>"key"</code>, bukan <code>key</code> tanpa kutip seperti di JavaScript object biasa.</li>
+      <li>Trailing comma — koma ekstra setelah elemen terakhir dalam array/object akan membuat JSON invalid.</li>
+      <li>Comment tidak didukung — berbeda dengan JS, JSON murni tidak punya sintaks komentar <code>//</code> atau <code>/* */</code>.</li>
+      <li>Single quote — JSON hanya menerima tanda kutip dua, tidak menerima <code>'single quote'</code>.</li>
+    </ol>
+
+    <div class="by-callout">💡 <strong>Tips:</strong> Kalau kamu sering dapat error "Unexpected token" saat parsing JSON, kemungkinan besar karena salah satu dari 4 kesalahan di atas. Paste JSON kamu di <a href="../index.html">JSONYAMify</a> untuk langsung lihat di baris mana error-nya, sekaligus rapikan formatnya otomatis.</div>
+
+    <h2>Kapan Sebaiknya Pakai JSON?</h2>
+    <p>JSON paling cocok untuk: response API, file konfigurasi aplikasi web/mobile, penyimpanan data NoSQL (seperti MongoDB), dan pertukaran data antar microservice. Untuk file konfigurasi yang butuh komentar dan lebih "manusiawi" dibaca, YAML biasanya jadi pilihan lebih nyaman — bisa kamu baca lebih lanjut di artikel <a href="json-vs-yaml.html">JSON vs YAML: Perbedaan dan Kapan Memakainya</a>.</p>
+
+    <a class="by-cta" href="../index.html">🔧 Coba Format & Validasi JSON Kamu di JSONYAMify</a>
+
+    <div class="by-related">
+      <h2>Baca Juga</h2>
+      <ul>
+        <li><a href="json-vs-yaml.html">JSON vs YAML: Perbedaan dan Kapan Memakainya</a></li>
+        <li><a href="kesalahan-umum-json.html">10 Kesalahan Umum Saat Menulis JSON dan Cara Memperbaikinya</a></li>
+        <li><a href="cara-format-json-online.html">Cara Format JSON Online Tanpa Install Software</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="by-lang-en">
+    <h1>What is JSON? A Complete Beginner's Guide</h1>
+    <p class="by-meta">Published by Andi Putra Ogie · Last updated: June 2026 · 6 min read</p>
+
+    <p>JSON (JavaScript Object Notation) is a lightweight, text-based data interchange format that's easy for humans to read and easy for machines to parse. Nearly every modern web API — from e-commerce REST APIs to payment webhooks — uses JSON as its primary data format.</p>
+
+    <h2>Basic JSON Structure</h2>
+    <p>JSON is built from two core structures: an <strong>object</strong> (a set of key-value pairs wrapped in curly braces <code>{}</code>) and an <strong>array</strong> (an ordered list of values wrapped in square brackets <code>[]</code>). Example:</p>
+    <pre><code>{
+  "name": "John Doe",
+  "age": 28,
+  "active": true,
+  "hobbies": ["coding", "reading", "futsal"],
+  "address": {
+    "city": "Jakarta",
+    "zip": "12345"
+  }
+}</code></pre>
+
+    <h2>Data Types Supported by JSON</h2>
+    <ul>
+      <li><strong>String</strong> — text, always wrapped in double quotes <code>"..."</code></li>
+      <li><strong>Number</strong> — integer or decimal, no quotes</li>
+      <li><strong>Boolean</strong> — <code>true</code> or <code>false</code></li>
+      <li><strong>Null</strong> — represents an empty/absent value</li>
+      <li><strong>Object</strong> — nested key-value pairs</li>
+      <li><strong>Array</strong> — a list of values, possibly mixed types</li>
+    </ul>
+
+    <h2>Why is JSON So Popular?</h2>
+    <p>Three main reasons: first, its syntax is concise and more readable than XML. Second, nearly every programming language ships with a built-in JSON parser (JavaScript, Python, PHP, Java, Go, etc). Third, JSON maps natively onto JavaScript object literals, making it extremely efficient for web and mobile apps.</p>
+
+    <h2>Common JSON Mistakes</h2>
+    <ol>
+      <li>Missing double quotes on keys — JSON requires <code>"key"</code>, not a bare <code>key</code> like a plain JS object.</li>
+      <li>Trailing commas — an extra comma after the last element in an array/object makes the JSON invalid.</li>
+      <li>Comments aren't supported — unlike JS, pure JSON has no <code>//</code> or <code>/* */</code> comment syntax.</li>
+      <li>Single quotes — JSON only accepts double quotes, never <code>'single quotes'</code>.</li>
+    </ol>
+
+    <div class="by-callout">💡 <strong>Tip:</strong> If you keep getting "Unexpected token" errors while parsing JSON, it's likely one of the four mistakes above. Paste your JSON into <a href="../index.html">JSONYAMify</a> to instantly see where the error is and auto-format it.</div>
+
+    <h2>When Should You Use JSON?</h2>
+    <p>JSON is ideal for API responses, web/mobile app config files, NoSQL data storage (like MongoDB), and data exchange between microservices. For config files that need comments and a more human-friendly format, YAML is often the more comfortable choice — read more in <a href="json-vs-yaml.html">JSON vs YAML: Differences and When to Use Each</a>.</p>
+
+    <a class="by-cta" href="../index.html">🔧 Format & Validate Your JSON on JSONYAMify</a>
+
+    <div class="by-related">
+      <h2>Read Also</h2>
+      <ul>
+        <li><a href="json-vs-yaml.html">JSON vs YAML: Differences and When to Use Each</a></li>
+        <li><a href="kesalahan-umum-json.html">10 Common JSON Mistakes and How to Fix Them</a></li>
+        <li><a href="cara-format-json-online.html">How to Format JSON Online Without Installing Software</a></li>
+      </ul>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 — by <a href="https://andiogie.vercel.app/">Andi Putra Ogie</a> · <a href="../about.html">About</a> · <a href="../faq.html">FAQ</a> · <a href="../privacy.html">Privacy Policy</a></p>
+</footer>
+</body>
+</html>

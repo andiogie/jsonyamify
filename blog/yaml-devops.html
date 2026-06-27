@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>YAML untuk DevOps: Docker Compose, Kubernetes, dan CI/CD | JSONYAMify Blog</title>
+<meta name="description" content="Bagaimana YAML dipakai di Docker Compose, Kubernetes manifest, dan pipeline CI/CD, lengkap dengan contoh konfigurasi dan tips menghindari error umum.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://jsonyamify.my.id/blog/yaml-devops.html">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../css/style.css?v=20260627">
+<link rel="stylesheet" href="../blog-assets/blog.css?v=20260627">
+<script defer src="../blog-assets/lang.js?v=20260627"></script>
+</head>
+<body>
+<header>
+  <a href="../index.html">JSONYAMify</a>
+  <nav><a href="../about.html">Tentang</a><a href="../faq.html">FAQ</a><a href="index.html">Blog</a><a href="../privacy.html">Privacy</a></nav>
+  <div class="by-lang-switch"><button data-lang="id">ID</button><button data-lang="en">EN</button></div>
+</header>
+
+<main class="by-article">
+  <p class="by-breadcrumb"><a href="../index.html">Home</a> / <a href="index.html">Blog</a> / YAML untuk DevOps</p>
+
+  <div class="by-lang-id">
+    <h1>YAML untuk DevOps: Docker Compose, Kubernetes, dan CI/CD</h1>
+    <p class="by-meta">Oleh Andi Putra Ogie · Update: Juni 2026 · 6 menit baca</p>
+
+    <p>Di dunia DevOps, YAML praktis menjadi bahasa universal untuk mendeskripsikan infrastruktur dan automasi. Berikut tiga konteks paling umum.</p>
+
+    <h2>1. Docker Compose</h2>
+    <pre><code>version: "3.9"
+services:
+  web:
+    image: nginx:latest
+    ports:
+      - "80:80"
+  api:
+    build: ./api
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - db
+  db:
+    image: postgres:16</code></pre>
+    <p>Setiap service didefinisikan sebagai key di bawah <code>services</code>, dengan konfigurasi image, port, environment variable, dan dependensi antar service.</p>
+
+    <h2>2. Kubernetes Manifest</h2>
+    <pre><code>apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      containers:
+        - name: api
+          image: myregistry/api:1.4.0
+          ports:
+            - containerPort: 8080</code></pre>
+    <p>Kubernetes sangat bergantung pada YAML untuk mendefinisikan Deployment, Service, ConfigMap, Secret, dan resource lain. Kesalahan indentasi sekecil apa pun bisa membuat <code>kubectl apply</code> gagal total.</p>
+
+    <h2>3. CI/CD Pipeline (GitHub Actions)</h2>
+    <pre><code>name: CI
+on: [push]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm install
+      - run: npm test</code></pre>
+
+    <h2>Tips Menghindari Error YAML di Production</h2>
+    <ul>
+      <li>Selalu gunakan linter YAML (misalnya <code>yamllint</code>) sebelum commit.</li>
+      <li>Jangan campur tab dan spasi — set editor untuk otomatis konversi tab jadi 2 spasi.</li>
+      <li>Quote string yang mengandung karakter spesial seperti <code>:</code>, <code>#</code>, atau nilai seperti <code>"yes"</code>/<code>"no"</code> untuk hindari Norway Problem.</li>
+      <li>Validasi struktur sebelum deploy — paste manifest ke <a href="../index.html">JSONYAMify</a> untuk cek apakah YAML valid dan lihat strukturnya dalam Tree View.</li>
+    </ul>
+
+    <a class="by-cta" href="../index.html">🔧 Validasi YAML Config Kamu</a>
+
+    <div class="by-related">
+      <h2>Baca Juga</h2>
+      <ul>
+        <li><a href="apa-itu-yaml.html">Apa itu YAML?</a></li>
+        <li><a href="json-vs-yaml.html">JSON vs YAML</a></li>
+        <li><a href="konversi-json-yaml.html">Cara Konversi JSON ke YAML</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="by-lang-en">
+    <h1>YAML for DevOps: Docker Compose, Kubernetes, and CI/CD</h1>
+    <p class="by-meta">By Andi Putra Ogie · Updated: June 2026 · 6 min read</p>
+
+    <p>In the DevOps world, YAML has practically become the universal language for describing infrastructure and automation. Here are the three most common contexts.</p>
+
+    <h2>1. Docker Compose</h2>
+    <pre><code>version: "3.9"
+services:
+  web:
+    image: nginx:latest
+    ports:
+      - "80:80"
+  api:
+    build: ./api
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - db
+  db:
+    image: postgres:16</code></pre>
+    <p>Each service is defined as a key under <code>services</code>, with config for image, ports, environment variables, and dependencies between services.</p>
+
+    <h2>2. Kubernetes Manifests</h2>
+    <pre><code>apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      containers:
+        - name: api
+          image: myregistry/api:1.4.0
+          ports:
+            - containerPort: 8080</code></pre>
+    <p>Kubernetes relies heavily on YAML to define Deployments, Services, ConfigMaps, Secrets, and more. Even a tiny indentation mistake can make <code>kubectl apply</code> fail entirely.</p>
+
+    <h2>3. CI/CD Pipeline (GitHub Actions)</h2>
+    <pre><code>name: CI
+on: [push]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm install
+      - run: npm test</code></pre>
+
+    <h2>Tips to Avoid YAML Errors in Production</h2>
+    <ul>
+      <li>Always run a YAML linter (e.g. <code>yamllint</code>) before committing.</li>
+      <li>Never mix tabs and spaces — configure your editor to convert tabs to 2 spaces automatically.</li>
+      <li>Quote strings containing special characters like <code>:</code>, <code>#</code>, or values like <code>"yes"</code>/<code>"no"</code> to avoid the Norway Problem.</li>
+      <li>Validate structure before deploying — paste your manifest into <a href="../index.html">JSONYAMify</a> to check it's valid YAML and inspect it in Tree View.</li>
+    </ul>
+
+    <a class="by-cta" href="../index.html">🔧 Validate Your YAML Config</a>
+
+    <div class="by-related">
+      <h2>Read Also</h2>
+      <ul>
+        <li><a href="apa-itu-yaml.html">What is YAML?</a></li>
+        <li><a href="json-vs-yaml.html">JSON vs YAML</a></li>
+        <li><a href="konversi-json-yaml.html">How to Convert JSON to YAML</a></li>
+      </ul>
+    </div>
+  </div>
+</main>
+
+<footer><p>© 2026 — by <a href="https://andiogie.vercel.app/">Andi Putra Ogie</a> · <a href="../about.html">About</a> · <a href="../faq.html">FAQ</a> · <a href="../privacy.html">Privacy Policy</a></p></footer>
+</body>
+</html>

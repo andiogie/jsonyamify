@@ -9,22 +9,19 @@
   <link rel="canonical" href="https://jsonyamify.my.id/about.html"/>
   <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="css/style.css?v=20260627"/>
+  <link rel="stylesheet" href="blog-assets/blog.css?v=20260627"/>
   <style>
-    .policy{max-width:760px;margin:0 auto;padding:0 1.5rem 3rem}
-    .policy h1{font-size:24px;margin-bottom:.25rem}
+    .policy{max-width:760px;margin:0 auto;padding:1.75rem 1.5rem 3rem}
+    .policy h1{font-size:26px;margin-bottom:.4rem}
     .policy .updated{font-size:12.5px;color:var(--text3);margin-bottom:1.75rem}
-    .policy h2{font-size:16px;margin:1.75rem 0 .6rem;display:flex;align-items:center;gap:8px}
-    .policy p,.policy li{font-size:14px;line-height:1.75;color:var(--text2)}
-    .policy ul{margin:.4rem 0 .8rem 1.2rem}
-    .policy a{color:var(--text);font-weight:500;text-decoration:none}
-    .policy a:hover{text-decoration:underline}
+    .policy h2{font-size:18px;margin:1.75rem 0 .65rem;display:flex;align-items:center;gap:8px}
+    .policy p,.policy li{font-size:14.5px;line-height:1.8;color:var(--text2)}
+    .policy ul{margin:.3rem 0 1.1rem 1.25rem}
+    .policy a{color:var(--text);font-weight:500;text-decoration:underline;text-decoration-color:var(--border2)}
+    .policy a:hover{opacity:.75}
     .back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;margin-top:1rem;color:var(--text2);text-decoration:none}
     .back-link:hover{color:var(--text)}
-    .lang-toggle-wrap{display:flex;justify-content:space-between;align-items:center;padding:1.5rem 1.5rem 0;max-width:760px;margin:0 auto}
-    .nav-links{display:flex;gap:14px;font-size:13px}
-    .nav-links a{color:var(--text2);text-decoration:none}
-    .nav-links a:hover{color:var(--text);text-decoration:underline}
     .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:1rem 0}
     .stat-box{border:0.5px solid var(--border);border-radius:10px;padding:.8rem;text-align:center}
     .stat-box .n{font-size:20px;font-weight:700;color:var(--text)}
@@ -32,19 +29,19 @@
   </style>
 </head>
 <body>
-<div id="app">
-  <div class="lang-toggle-wrap">
-    <div class="nav-links">
-      <a href="index.html">JSONYAMify</a>
-      <a href="about.html"><strong id="nav-about">Tentang</strong></a>
+  <header>
+    <a href="index.html">JSONYAMify</a>
+    <nav>
+      <a href="about.html" id="nav-about">Tentang</a>
       <a href="faq.html" id="nav-faq">FAQ</a>
+      <a href="blog/index.html">Blog</a>
       <a href="privacy.html" id="nav-privacy">Privacy</a>
+    </nav>
+    <div class="by-lang-switch">
+      <button class="on" id="lb-id" onclick="setALang('id')">ID</button>
+      <button id="lb-en" onclick="setALang('en')">EN</button>
     </div>
-    <div style="display:flex;gap:3px">
-      <button class="lang-btn on" id="lb-id" onclick="setALang('id')">ID</button>
-      <button class="lang-btn" id="lb-en" onclick="setALang('en')">EN</button>
-    </div>
-  </div>
+  </header>
 
   <div class="policy">
     <h1 id="a-title">Tentang JSONYAMify</h1>
@@ -83,7 +80,6 @@
 
     <a class="back-link" href="index.html"><i class="ti ti-arrow-left"></i> <span id="back-text">Kembali ke JSONYAMify</span></a>
   </div>
-</div>
 
 <script>
 const AT={

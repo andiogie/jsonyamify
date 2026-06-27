@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Apa itu JSON Schema dan Cara Memvalidasinya | JSONYAMify Blog</title>
+<meta name="description" content="Pengantar JSON Schema: apa itu, kenapa penting untuk validasi API, dan contoh penulisan schema sederhana untuk memastikan struktur data konsisten.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://jsonyamify.my.id/blog/json-schema-validation.html">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../css/style.css?v=20260627">
+<link rel="stylesheet" href="../blog-assets/blog.css?v=20260627">
+<script defer src="../blog-assets/lang.js?v=20260627"></script>
+</head>
+<body>
+<header>
+  <a href="../index.html">JSONYAMify</a>
+  <nav><a href="../about.html">Tentang</a><a href="../faq.html">FAQ</a><a href="index.html">Blog</a><a href="../privacy.html">Privacy</a></nav>
+  <div class="by-lang-switch"><button data-lang="id">ID</button><button data-lang="en">EN</button></div>
+</header>
+
+<main class="by-article">
+  <p class="by-breadcrumb"><a href="../index.html">Home</a> / <a href="index.html">Blog</a> / JSON Schema</p>
+
+  <div class="by-lang-id">
+    <h1>Apa itu JSON Schema dan Cara Memvalidasinya</h1>
+    <p class="by-meta">Oleh Andi Putra Ogie · Update: Juni 2026 · 6 menit baca</p>
+
+    <p>JSON Schema adalah "blueprint" atau aturan yang mendefinisikan struktur, tipe data, dan batasan nilai yang valid untuk dokumen JSON. Dengan JSON Schema, tim bisa memastikan data yang masuk/keluar dari API selalu konsisten dengan kontrak yang disepakati.</p>
+
+    <h2>Contoh Sederhana</h2>
+    <p>Misal kita punya data user seperti ini:</p>
+    <pre><code>{
+  "nama": "Budi",
+  "umur": 28,
+  "email": "budi@example.com"
+}</code></pre>
+    <p>JSON Schema yang memvalidasi struktur di atas:</p>
+    <pre><code>{
+  "type": "object",
+  "properties": {
+    "nama": { "type": "string" },
+    "umur": { "type": "integer", "minimum": 0 },
+    "email": { "type": "string", "format": "email" }
+  },
+  "required": ["nama", "umur", "email"]
+}</code></pre>
+
+    <h2>Kenapa JSON Schema Penting?</h2>
+    <ul>
+      <li><strong>Kontrak API yang jelas</strong> — frontend dan backend bisa sepakat soal struktur data tanpa perlu baca kode satu sama lain.</li>
+      <li><strong>Validasi otomatis</strong> — request/response yang tidak sesuai schema bisa langsung ditolak sebelum masuk logika bisnis.</li>
+      <li><strong>Dokumentasi hidup</strong> — schema bisa dipakai untuk generate dokumentasi API secara otomatis (misalnya OpenAPI/Swagger).</li>
+      <li><strong>Testing lebih mudah</strong> — data dummy untuk testing bisa di-generate otomatis dari schema.</li>
+    </ul>
+
+    <h2>Tipe Validasi yang Umum Dipakai</h2>
+    <ul>
+      <li><code>type</code> — string, number, integer, boolean, object, array, null</li>
+      <li><code>required</code> — daftar field yang wajib ada</li>
+      <li><code>minimum</code>/<code>maximum</code> — batas nilai angka</li>
+      <li><code>pattern</code> — regex untuk validasi format string</li>
+      <li><code>enum</code> — daftar nilai yang diperbolehkan</li>
+      <li><code>minLength</code>/<code>maxLength</code> — batas panjang string</li>
+    </ul>
+
+    <div class="by-callout">💡 Sebelum menulis schema, pastikan dulu struktur data contohnya benar-benar valid dan rapi. Gunakan <a href="../index.html">JSONYAMify</a> untuk memformat dan memeriksa data contoh sebelum dijadikan basis schema.</div>
+
+    <a class="by-cta" href="../index.html">🔧 Rapikan JSON Sebelum Membuat Schema</a>
+
+    <div class="by-related">
+      <h2>Baca Juga</h2>
+      <ul>
+        <li><a href="kesalahan-umum-json.html">10 Kesalahan Umum Saat Menulis JSON</a></li>
+        <li><a href="tips-debug-api-payload.html">Tips Debug API Payload JSON</a></li>
+        <li><a href="json-untuk-pemula.html">JSON untuk Pemula: Belajar dari Nol</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="by-lang-en">
+    <h1>What is JSON Schema and How to Validate With It</h1>
+    <p class="by-meta">By Andi Putra Ogie · Updated: June 2026 · 6 min read</p>
+
+    <p>JSON Schema is a "blueprint" — a set of rules that defines the structure, data types, and valid value constraints for a JSON document. With JSON Schema, teams can guarantee data flowing in and out of an API always matches an agreed-upon contract.</p>
+
+    <h2>A Simple Example</h2>
+    <p>Say we have this user data:</p>
+    <pre><code>{
+  "name": "John",
+  "age": 28,
+  "email": "john@example.com"
+}</code></pre>
+    <p>A JSON Schema that validates the structure above:</p>
+    <pre><code>{
+  "type": "object",
+  "properties": {
+    "name": { "type": "string" },
+    "age": { "type": "integer", "minimum": 0 },
+    "email": { "type": "string", "format": "email" }
+  },
+  "required": ["name", "age", "email"]
+}</code></pre>
+
+    <h2>Why Does JSON Schema Matter?</h2>
+    <ul>
+      <li><strong>Clear API contracts</strong> — frontend and backend can agree on data structure without reading each other's code.</li>
+      <li><strong>Automatic validation</strong> — requests/responses that don't match the schema get rejected before reaching business logic.</li>
+      <li><strong>Living documentation</strong> — schemas can auto-generate API docs (e.g. via OpenAPI/Swagger).</li>
+      <li><strong>Easier testing</strong> — dummy test data can be auto-generated straight from the schema.</li>
+    </ul>
+
+    <h2>Common Validation Keywords</h2>
+    <ul>
+      <li><code>type</code> — string, number, integer, boolean, object, array, null</li>
+      <li><code>required</code> — list of mandatory fields</li>
+      <li><code>minimum</code>/<code>maximum</code> — numeric bounds</li>
+      <li><code>pattern</code> — regex for string format validation</li>
+      <li><code>enum</code> — list of allowed values</li>
+      <li><code>minLength</code>/<code>maxLength</code> — string length bounds</li>
+    </ul>
+
+    <div class="by-callout">💡 Before writing a schema, make sure your example data is actually valid and clean. Use <a href="../index.html">JSONYAMify</a> to format and inspect your sample data before basing a schema on it.</div>
+
+    <a class="by-cta" href="../index.html">🔧 Clean Up JSON Before Building a Schema</a>
+
+    <div class="by-related">
+      <h2>Read Also</h2>
+      <ul>
+        <li><a href="kesalahan-umum-json.html">10 Common JSON Mistakes</a></li>
+        <li><a href="tips-debug-api-payload.html">Tips for Debugging JSON API Payloads</a></li>
+        <li><a href="json-untuk-pemula.html">JSON for Beginners: Learn From Scratch</a></li>
+      </ul>
+    </div>
+  </div>
+</main>
+
+<footer><p>© 2026 — by <a href="https://andiogie.vercel.app/">Andi Putra Ogie</a> · <a href="../about.html">About</a> · <a href="../faq.html">FAQ</a> · <a href="../privacy.html">Privacy Policy</a></p></footer>
+</body>
+</html>

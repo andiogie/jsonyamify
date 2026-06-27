@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>JSON vs YAML: Perbedaan dan Kapan Memakainya | JSONYAMify Blog</title>
+<meta name="description" content="Perbandingan lengkap JSON vs YAML: sintaks, performa, keterbacaan, use case, dan rekomendasi kapan sebaiknya memilih masing-masing format.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://jsonyamify.my.id/blog/json-vs-yaml.html">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../css/style.css?v=20260627">
+<link rel="stylesheet" href="../blog-assets/blog.css?v=20260627">
+<script defer src="../blog-assets/lang.js?v=20260627"></script>
+</head>
+<body>
+<header>
+  <a href="../index.html">JSONYAMify</a>
+  <nav><a href="../about.html">Tentang</a><a href="../faq.html">FAQ</a><a href="index.html">Blog</a><a href="../privacy.html">Privacy</a></nav>
+  <div class="by-lang-switch"><button data-lang="id">ID</button><button data-lang="en">EN</button></div>
+</header>
+
+<main class="by-article">
+  <p class="by-breadcrumb"><a href="../index.html">Home</a> / <a href="index.html">Blog</a> / JSON vs YAML</p>
+
+  <div class="by-lang-id">
+    <h1>JSON vs YAML: Perbedaan dan Kapan Memakainya</h1>
+    <p class="by-meta">Oleh Andi Putra Ogie · Update: Juni 2026 · 6 menit baca</p>
+
+    <p>JSON dan YAML sama-sama format pertukaran data, dan YAML bahkan adalah <em>superset</em> dari JSON (artinya setiap JSON valid juga adalah YAML valid). Tapi keduanya punya filosofi dan use case yang berbeda.</p>
+
+    <h2>Tabel Perbandingan</h2>
+    <table style="width:100%;border-collapse:collapse;margin-bottom:20px;">
+      <tr style="background:var(--by-bg-soft);"><th style="text-align:left;padding:8px;border:1px solid var(--by-border);">Aspek</th><th style="text-align:left;padding:8px;border:1px solid var(--by-border);">JSON</th><th style="text-align:left;padding:8px;border:1px solid var(--by-border);">YAML</th></tr>
+      <tr><td style="padding:8px;border:1px solid var(--by-border);">Keterbacaan manusia</td><td style="padding:8px;border:1px solid var(--by-border);">Cukup, tapi verbose</td><td style="padding:8px;border:1px solid var(--by-border);">Lebih bersih & ringkas</td></tr>
+      <tr><td style="padding:8px;border:1px solid var(--by-border);">Komentar</td><td style="padding:8px;border:1px solid var(--by-border);">Tidak didukung</td><td style="padding:8px;border:1px solid var(--by-border);">Didukung (<code>#</code>)</td></tr>
+      <tr><td style="padding:8px;border:1px solid var(--by-border);">Parsing speed</td><td style="padding:8px;border:1px solid var(--by-border);">Lebih cepat</td><td style="padding:8px;border:1px solid var(--by-border);">Lebih lambat (sintaks kompleks)</td></tr>
+      <tr><td style="padding:8px;border:1px solid var(--by-border);">Risiko kesalahan</td><td style="padding:8px;border:1px solid var(--by-border);">Rendah (sintaks tegas)</td><td style="padding:8px;border:1px solid var(--by-border);">Lebih tinggi (indentasi, Norway Problem)</td></tr>
+      <tr><td style="padding:8px;border:1px solid var(--by-border);">Use case umum</td><td style="padding:8px;border:1px solid var(--by-border);">API, NoSQL, web app</td><td style="padding:8px;border:1px solid var(--by-border);">Config infra, CI/CD, IaC</td></tr>
+    </table>
+
+    <h2>Kapan Pakai JSON?</h2>
+    <ul>
+      <li>Membangun atau mengonsumsi REST/GraphQL API.</li>
+      <li>Data perlu diproses oleh JavaScript secara langsung (browser/Node.js).</li>
+      <li>Performa parsing jadi prioritas (misalnya data besar yang diproses real-time).</li>
+      <li>Menyimpan data di database NoSQL seperti MongoDB.</li>
+    </ul>
+
+    <h2>Kapan Pakai YAML?</h2>
+    <ul>
+      <li>File konfigurasi yang sering diedit manual oleh tim (Docker Compose, Kubernetes, Ansible).</li>
+      <li>Definisi pipeline CI/CD (GitHub Actions, GitLab CI, CircleCI).</li>
+      <li>Butuh komentar untuk menjelaskan tiap bagian konfigurasi ke rekan tim.</li>
+      <li>Infrastructure as Code (Terraform Cloud config, CloudFormation versi YAML).</li>
+    </ul>
+
+    <div class="by-callout">💡 Tidak perlu pilih salah satu secara permanen — banyak tim menulis konfigurasi di YAML untuk kenyamanan, lalu mengonversinya ke JSON saat dikirim lewat API. <a href="../index.html">JSONYAMify</a> bisa melakukan konversi dua arah secara instan di browser.</div>
+
+    <a class="by-cta" href="../index.html">🔧 Konversi JSON ↔ YAML Sekarang</a>
+
+    <div class="by-related">
+      <h2>Baca Juga</h2>
+      <ul>
+        <li><a href="apa-itu-json.html">Apa itu JSON?</a></li>
+        <li><a href="apa-itu-yaml.html">Apa itu YAML?</a></li>
+        <li><a href="konversi-json-yaml.html">Cara Konversi JSON ke YAML dan Sebaliknya</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="by-lang-en">
+    <h1>JSON vs YAML: Differences and When to Use Each</h1>
+    <p class="by-meta">By Andi Putra Ogie · Updated: June 2026 · 6 min read</p>
+
+    <p>JSON and YAML are both data interchange formats, and YAML is technically a <em>superset</em> of JSON (every valid JSON document is also valid YAML). Still, the two have very different philosophies and ideal use cases.</p>
+
+    <h2>Comparison Table</h2>
+    <table style="width:100%;border-collapse:collapse;margin-bottom:20px;">
+      <tr style="background:var(--by-bg-soft);"><th style="text-align:left;padding:8px;border:1px solid var(--by-border);">Aspect</th><th style="text-align:left;padding:8px;border:1px solid var(--by-border);">JSON</th><th style="text-align:left;padding:8px;border:1px solid var(--by-border);">YAML</th></tr>
+      <tr><td style="padding:8px;border:1px solid var(--by-border);">Human readability</td><td style="padding:8px;border:1px solid var(--by-border);">Decent, but verbose</td><td style="padding:8px;border:1px solid var(--by-border);">Cleaner & more concise</td></tr>
+      <tr><td style="padding:8px;border:1px solid var(--by-border);">Comments</td><td style="padding:8px;border:1px solid var(--by-border);">Not supported</td><td style="padding:8px;border:1px solid var(--by-border);">Supported (<code>#</code>)</td></tr>
+      <tr><td style="padding:8px;border:1px solid var(--by-border);">Parsing speed</td><td style="padding:8px;border:1px solid var(--by-border);">Faster</td><td style="padding:8px;border:1px solid var(--by-border);">Slower (more complex syntax)</td></tr>
+      <tr><td style="padding:8px;border:1px solid var(--by-border);">Error risk</td><td style="padding:8px;border:1px solid var(--by-border);">Lower (strict syntax)</td><td style="padding:8px;border:1px solid var(--by-border);">Higher (indentation, Norway Problem)</td></tr>
+      <tr><td style="padding:8px;border:1px solid var(--by-border);">Common use case</td><td style="padding:8px;border:1px solid var(--by-border);">APIs, NoSQL, web apps</td><td style="padding:8px;border:1px solid var(--by-border);">Infra config, CI/CD, IaC</td></tr>
+    </table>
+
+    <h2>When to Use JSON</h2>
+    <ul>
+      <li>Building or consuming REST/GraphQL APIs.</li>
+      <li>Data needs to be consumed directly by JavaScript (browser/Node.js).</li>
+      <li>Parsing performance matters (e.g. large real-time data).</li>
+      <li>Storing data in NoSQL databases like MongoDB.</li>
+    </ul>
+
+    <h2>When to Use YAML</h2>
+    <ul>
+      <li>Config files edited by hand regularly (Docker Compose, Kubernetes, Ansible).</li>
+      <li>CI/CD pipeline definitions (GitHub Actions, GitLab CI, CircleCI).</li>
+      <li>You need comments to explain config sections to teammates.</li>
+      <li>Infrastructure as Code (Terraform Cloud configs, CloudFormation's YAML flavor).</li>
+    </ul>
+
+    <div class="by-callout">💡 You don't have to pick one permanently — many teams author config in YAML for readability, then convert it to JSON when sending it over an API. <a href="../index.html">JSONYAMify</a> converts both directions instantly in your browser.</div>
+
+    <a class="by-cta" href="../index.html">🔧 Convert JSON ↔ YAML Now</a>
+
+    <div class="by-related">
+      <h2>Read Also</h2>
+      <ul>
+        <li><a href="apa-itu-json.html">What is JSON?</a></li>
+        <li><a href="apa-itu-yaml.html">What is YAML?</a></li>
+        <li><a href="konversi-json-yaml.html">How to Convert JSON to YAML and Back</a></li>
+      </ul>
+    </div>
+  </div>
+</main>
+
+<footer><p>© 2026 — by <a href="https://andiogie.vercel.app/">Andi Putra Ogie</a> · <a href="../about.html">About</a> · <a href="../faq.html">FAQ</a> · <a href="../privacy.html">Privacy Policy</a></p></footer>
+</body>
+</html>

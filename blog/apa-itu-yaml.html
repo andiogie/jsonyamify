@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Apa itu YAML? Pengertian, Sintaks, dan Contoh Penggunaannya | JSONYAMify Blog</title>
+<meta name="description" content="Pelajari apa itu YAML, sintaks dasarnya, kenapa banyak dipakai untuk file konfigurasi seperti Docker Compose dan Kubernetes, serta perbandingannya dengan JSON.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://jsonyamify.my.id/blog/apa-itu-yaml.html">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../css/style.css?v=20260627">
+<link rel="stylesheet" href="../blog-assets/blog.css?v=20260627">
+<script defer src="../blog-assets/lang.js?v=20260627"></script>
+</head>
+<body>
+<header>
+  <a href="../index.html">JSONYAMify</a>
+  <nav>
+    <a href="../about.html">Tentang</a>
+    <a href="../faq.html">FAQ</a>
+    <a href="index.html">Blog</a>
+    <a href="../privacy.html">Privacy</a>
+  </nav>
+  <div class="by-lang-switch"><button data-lang="id">ID</button><button data-lang="en">EN</button></div>
+</header>
+
+<main class="by-article">
+  <p class="by-breadcrumb"><a href="../index.html">Home</a> / <a href="index.html">Blog</a> / Apa itu YAML?</p>
+
+  <div class="by-lang-id">
+    <h1>Apa itu YAML? Pengertian, Sintaks, dan Contoh Penggunaannya</h1>
+    <p class="by-meta">Oleh Andi Putra Ogie · Update: Juni 2026 · 5 menit baca</p>
+
+    <p>YAML ("YAML Ain't Markup Language") adalah format serialisasi data yang dirancang agar mudah dibaca manusia. Tidak seperti JSON yang mengandalkan kurung kurawal dan tanda kutip, YAML menggunakan <strong>indentasi spasi</strong> untuk menunjukkan struktur data — mirip seperti Python.</p>
+
+    <h2>Contoh Sintaks YAML</h2>
+    <pre><code>server:
+  host: 0.0.0.0
+  port: 8080
+  debug: true
+
+database:
+  engine: postgres
+  replicas:
+    - primary
+    - replica-1
+    - replica-2</code></pre>
+    <p>Perhatikan: tidak ada kurung kurawal, tidak ada tanda kutip wajib pada key, dan tidak ada koma di akhir baris. Struktur bersarang ditentukan murni oleh jumlah spasi indentasi (disarankan 2 spasi, <strong>jangan pakai tab</strong>).</p>
+
+    <h2>Fitur Khas YAML yang Tidak Ada di JSON</h2>
+    <ul>
+      <li><strong>Komentar</strong> — bisa pakai <code>#</code> untuk menjelaskan konfigurasi.</li>
+      <li><strong>Multi-dokumen</strong> — satu file bisa berisi beberapa dokumen YAML dipisah <code>---</code>.</li>
+      <li><strong>Anchor &amp; alias</strong> (<code>&amp;</code> dan <code>*</code>) — untuk reuse nilai tanpa duplikasi.</li>
+      <li><strong>String tanpa kutip</strong> — lebih ringkas untuk dibaca, meski berisiko ambigu (lihat bagian jebakan di bawah).</li>
+    </ul>
+
+    <h2>Di Mana YAML Biasa Dipakai?</h2>
+    <p>YAML adalah standar de-facto untuk file konfigurasi infrastruktur modern: <code>docker-compose.yml</code>, manifest Kubernetes, workflow GitHub Actions/GitLab CI, Ansible playbook, dan konfigurasi banyak framework backend. Karena lebih enak dibaca manusia dibanding JSON, YAML jadi favorit untuk file yang sering diedit manual oleh developer/DevOps.</p>
+
+    <h2>Jebakan Umum YAML</h2>
+    <ol>
+      <li><strong>Tab vs spasi</strong> — YAML tidak menerima karakter tab untuk indentasi, harus spasi.</li>
+      <li><strong>Norway Problem</strong> — nilai <code>no</code>, <code>yes</code>, <code>on</code>, <code>off</code> tanpa kutip bisa otomatis diparse jadi boolean, bukan string (terjadi pada parser YAML 1.1, termasuk kode negara "NO" untuk Norwegia yang berubah jadi <code>false</code>).</li>
+      <li><strong>Indentasi tidak konsisten</strong> — beda jumlah spasi antar level bisa membuat parser error atau salah baca struktur.</li>
+    </ol>
+
+    <div class="by-callout">💡 Mau ubah YAML konfigurasi jadi JSON (atau sebaliknya) tanpa pusing soal indentasi? Paste langsung di <a href="../index.html">JSONYAMify</a> — konversi dua arah otomatis dengan validasi.</div>
+
+    <a class="by-cta" href="../index.html">🔧 Konversi JSON ↔ YAML di JSONYAMify</a>
+
+    <div class="by-related">
+      <h2>Baca Juga</h2>
+      <ul>
+        <li><a href="apa-itu-json.html">Apa itu JSON? Panduan Lengkap untuk Pemula</a></li>
+        <li><a href="json-vs-yaml.html">JSON vs YAML: Perbedaan dan Kapan Memakainya</a></li>
+        <li><a href="yaml-devops.html">YAML untuk DevOps: Docker Compose, Kubernetes, dan CI/CD</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="by-lang-en">
+    <h1>What is YAML? Meaning, Syntax, and Use Cases</h1>
+    <p class="by-meta">By Andi Putra Ogie · Updated: June 2026 · 5 min read</p>
+
+    <p>YAML ("YAML Ain't Markup Language") is a data serialization format designed to be human-readable. Unlike JSON, which relies on curly braces and quotation marks, YAML uses <strong>space indentation</strong> to represent structure — similar to Python.</p>
+
+    <h2>YAML Syntax Example</h2>
+    <pre><code>server:
+  host: 0.0.0.0
+  port: 8080
+  debug: true
+
+database:
+  engine: postgres
+  replicas:
+    - primary
+    - replica-1
+    - replica-2</code></pre>
+    <p>Notice: no curly braces, no mandatory quotes on keys, and no trailing commas. Nesting is determined purely by indentation depth (2 spaces is recommended, <strong>never use tabs</strong>).</p>
+
+    <h2>YAML Features Not Found in JSON</h2>
+    <ul>
+      <li><strong>Comments</strong> — use <code>#</code> to annotate configuration.</li>
+      <li><strong>Multiple documents</strong> — a single file can hold several YAML documents separated by <code>---</code>.</li>
+      <li><strong>Anchors &amp; aliases</strong> (<code>&amp;</code> and <code>*</code>) — reuse values without duplication.</li>
+      <li><strong>Unquoted strings</strong> — more concise to read, though it can introduce ambiguity (see pitfalls below).</li>
+    </ul>
+
+    <h2>Where Is YAML Commonly Used?</h2>
+    <p>YAML is the de-facto standard for modern infrastructure config files: <code>docker-compose.yml</code>, Kubernetes manifests, GitHub Actions/GitLab CI workflows, Ansible playbooks, and many backend framework configs. Because it's more pleasant for humans to read than JSON, it's the go-to choice for files developers and DevOps engineers edit by hand often.</p>
+
+    <h2>Common YAML Pitfalls</h2>
+    <ol>
+      <li><strong>Tabs vs spaces</strong> — YAML rejects tab characters for indentation; spaces only.</li>
+      <li><strong>The "Norway Problem"</strong> — unquoted <code>no</code>, <code>yes</code>, <code>on</code>, <code>off</code> get auto-parsed as booleans instead of strings (a YAML 1.1 quirk — the country code "NO" famously becomes <code>false</code>).</li>
+      <li><strong>Inconsistent indentation</strong> — mismatched spacing between levels causes parser errors or misread structures.</li>
+    </ol>
+
+    <div class="by-callout">💡 Want to convert a YAML config to JSON (or vice versa) without fighting indentation? Paste it straight into <a href="../index.html">JSONYAMify</a> — bidirectional conversion with built-in validation.</div>
+
+    <a class="by-cta" href="../index.html">🔧 Convert JSON ↔ YAML on JSONYAMify</a>
+
+    <div class="by-related">
+      <h2>Read Also</h2>
+      <ul>
+        <li><a href="apa-itu-json.html">What is JSON? A Complete Beginner's Guide</a></li>
+        <li><a href="json-vs-yaml.html">JSON vs YAML: Differences and When to Use Each</a></li>
+        <li><a href="yaml-devops.html">YAML for DevOps: Docker Compose, Kubernetes, and CI/CD</a></li>
+      </ul>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 — by <a href="https://andiogie.vercel.app/">Andi Putra Ogie</a> · <a href="../about.html">About</a> · <a href="../faq.html">FAQ</a> · <a href="../privacy.html">Privacy Policy</a></p>
+</footer>
+</body>
+</html>

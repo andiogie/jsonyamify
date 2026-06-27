@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>JSON untuk Pemula: Belajar dari Nol Sampai Paham API | JSONYAMify Blog</title>
+<meta name="description" content="Roadmap belajar JSON untuk pemula: dari konsep dasar, cara baca struktur data, sampai memahami bagaimana JSON dipakai dalam request dan response API.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://jsonyamify.my.id/blog/json-untuk-pemula.html">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../css/style.css?v=20260627">
+<link rel="stylesheet" href="../blog-assets/blog.css?v=20260627">
+<script defer src="../blog-assets/lang.js?v=20260627"></script>
+</head>
+<body>
+<header>
+  <a href="../index.html">JSONYAMify</a>
+  <nav><a href="../about.html">Tentang</a><a href="../faq.html">FAQ</a><a href="index.html">Blog</a><a href="../privacy.html">Privacy</a></nav>
+  <div class="by-lang-switch"><button data-lang="id">ID</button><button data-lang="en">EN</button></div>
+</header>
+
+<main class="by-article">
+  <p class="by-breadcrumb"><a href="../index.html">Home</a> / <a href="index.html">Blog</a> / JSON untuk Pemula</p>
+
+  <div class="by-lang-id">
+    <h1>JSON untuk Pemula: Belajar dari Nol Sampai Paham API</h1>
+    <p class="by-meta">Oleh Andi Putra Ogie · Update: Juni 2026 · 7 menit baca</p>
+
+    <p>Kalau kamu baru mulai belajar web development atau backend, JSON adalah salah satu konsep paling fundamental yang wajib dikuasai. Berikut roadmap belajar yang bisa kamu ikuti langkah demi langkah.</p>
+
+    <h2>Tahap 1: Pahami Struktur Dasar</h2>
+    <p>Mulai dari memahami bahwa JSON hanya terdiri dari 6 tipe data: string, number, boolean, null, object, dan array. Coba baca artikel <a href="apa-itu-json.html">Apa itu JSON?</a> dulu kalau belum.</p>
+
+    <h2>Tahap 2: Latihan Baca JSON Nested</h2>
+    <p>Data dunia nyata jarang sesederhana satu level. Coba pahami contoh ini:</p>
+    <pre><code>{
+  "order": {
+    "id": "ORD-001",
+    "items": [
+      { "produk": "Sepatu", "qty": 2, "harga": 250000 },
+      { "produk": "Kaos", "qty": 1, "harga": 75000 }
+    ],
+    "total": 575000
+  }
+}</code></pre>
+    <p>Untuk mengakses harga produk pertama, kamu perlu jalur: <code>order.items[0].harga</code>. Latihan membaca jalur seperti ini adalah skill yang akan terus kamu pakai saat membaca dokumentasi API.</p>
+
+    <h2>Tahap 3: Pahami Bagaimana JSON Dipakai di API</h2>
+    <p>Saat frontend memanggil API, biasanya alurnya:</p>
+    <ol>
+      <li>Frontend kirim <strong>request</strong> (kadang membawa <code>body</code> berformat JSON, misal saat submit form).</li>
+      <li>Backend proses, lalu kirim balik <strong>response</strong> berformat JSON.</li>
+      <li>Frontend "parse" JSON tersebut jadi object yang bisa dipakai di kode (misalnya <code>JSON.parse()</code> di JavaScript).</li>
+    </ol>
+
+    <h2>Tahap 4: Latihan dengan Data Nyata</h2>
+    <p>Coba ambil response dari API publik mana pun (banyak API gratis untuk latihan), lalu paste ke <a href="../index.html">JSONYAMify</a>. Gunakan Tree View untuk eksplorasi struktur, dan coba praktikkan beberapa hal:</p>
+    <ul>
+      <li>Cari field tertentu lewat fitur pencarian.</li>
+      <li>Ubah satu nilai dan lihat bagaimana output JSON-nya berubah.</li>
+      <li>Coba convert ke YAML untuk melihat representasi alternatifnya.</li>
+    </ul>
+
+    <h2>Tahap 5: Pelajari Kesalahan Umum dan JSON Schema</h2>
+    <p>Setelah nyaman dengan struktur dasar, lanjut ke <a href="kesalahan-umum-json.html">10 Kesalahan Umum Saat Menulis JSON</a> dan <a href="json-schema-validation.html">JSON Schema</a> untuk level pemahaman yang lebih dalam soal validasi data.</p>
+
+    <div class="by-callout">💡 Cara belajar paling efektif adalah <em>learning by doing</em>. Jangan cuma baca teori — langsung praktik dengan data JSON nyata di tool seperti JSONYAMify sambil eksplorasi tiap fiturnya.</div>
+
+    <a class="by-cta" href="../index.html">🔧 Mulai Praktik JSON di JSONYAMify</a>
+
+    <div class="by-related">
+      <h2>Baca Juga</h2>
+      <ul>
+        <li><a href="apa-itu-json.html">Apa itu JSON?</a></li>
+        <li><a href="json-vs-yaml.html">JSON vs YAML</a></li>
+        <li><a href="tips-debug-api-payload.html">Tips Debug API Payload</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="by-lang-en">
+    <h1>JSON for Beginners: Learn From Scratch to Understanding APIs</h1>
+    <p class="by-meta">By Andi Putra Ogie · Updated: June 2026 · 7 min read</p>
+
+    <p>If you're just starting out in web or backend development, JSON is one of the most fundamental concepts you'll need to master. Here's a step-by-step learning roadmap.</p>
+
+    <h2>Stage 1: Understand the Basic Structure</h2>
+    <p>Start by understanding that JSON only has 6 data types: string, number, boolean, null, object, and array. Read <a href="apa-itu-json.html">What is JSON?</a> first if you haven't.</p>
+
+    <h2>Stage 2: Practice Reading Nested JSON</h2>
+    <p>Real-world data is rarely a single flat level. Try parsing this example:</p>
+    <pre><code>{
+  "order": {
+    "id": "ORD-001",
+    "items": [
+      { "product": "Shoes", "qty": 2, "price": 250000 },
+      { "product": "T-Shirt", "qty": 1, "price": 75000 }
+    ],
+    "total": 575000
+  }
+}</code></pre>
+    <p>To access the first product's price, you need the path: <code>order.items[0].price</code>. Practicing reading paths like this is a skill you'll keep using whenever you read API documentation.</p>
+
+    <h2>Stage 3: Understand How JSON Is Used in APIs</h2>
+    <p>When a frontend calls an API, the flow is usually:</p>
+    <ol>
+      <li>The frontend sends a <strong>request</strong> (sometimes with a JSON <code>body</code>, e.g. when submitting a form).</li>
+      <li>The backend processes it and sends back a JSON <strong>response</strong>.</li>
+      <li>The frontend "parses" that JSON into an object usable in code (e.g. <code>JSON.parse()</code> in JavaScript).</li>
+    </ol>
+
+    <h2>Stage 4: Practice With Real Data</h2>
+    <p>Grab a response from any public API (there are plenty of free ones for practice) and paste it into <a href="../index.html">JSONYAMify</a>. Use Tree View to explore the structure, and try:</p>
+    <ul>
+      <li>Searching for a specific field using the search feature.</li>
+      <li>Changing one value and seeing how the output JSON updates.</li>
+      <li>Converting it to YAML to see an alternative representation.</li>
+    </ul>
+
+    <h2>Stage 5: Learn Common Mistakes and JSON Schema</h2>
+    <p>Once you're comfortable with the basics, move on to <a href="kesalahan-umum-json.html">10 Common JSON Mistakes</a> and <a href="json-schema-validation.html">JSON Schema</a> for a deeper understanding of data validation.</p>
+
+    <div class="by-callout">💡 The most effective way to learn is by doing. Don't just read theory — practice with real JSON data right inside a tool like JSONYAMify while exploring each feature.</div>
+
+    <a class="by-cta" href="../index.html">🔧 Start Practicing JSON on JSONYAMify</a>
+
+    <div class="by-related">
+      <h2>Read Also</h2>
+      <ul>
+        <li><a href="apa-itu-json.html">What is JSON?</a></li>
+        <li><a href="json-vs-yaml.html">JSON vs YAML</a></li>
+        <li><a href="tips-debug-api-payload.html">Tips for Debugging API Payloads</a></li>
+      </ul>
+    </div>
+  </div>
+</main>
+
+<footer><p>© 2026 — by <a href="https://andiogie.vercel.app/">Andi Putra Ogie</a> · <a href="../about.html">About</a> · <a href="../faq.html">FAQ</a> · <a href="../privacy.html">Privacy Policy</a></p></footer>
+</body>
+</html>

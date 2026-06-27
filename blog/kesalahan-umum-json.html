@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>10 Kesalahan Umum Saat Menulis JSON dan Cara Memperbaikinya | JSONYAMify Blog</title>
+<meta name="description" content="Daftar 10 kesalahan paling umum saat menulis atau mengedit JSON manual, beserta cara memperbaiki masing-masing dengan contoh kode.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://jsonyamify.my.id/blog/kesalahan-umum-json.html">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../css/style.css?v=20260627">
+<link rel="stylesheet" href="../blog-assets/blog.css?v=20260627">
+<script defer src="../blog-assets/lang.js?v=20260627"></script>
+</head>
+<body>
+<header>
+  <a href="../index.html">JSONYAMify</a>
+  <nav><a href="../about.html">Tentang</a><a href="../faq.html">FAQ</a><a href="index.html">Blog</a><a href="../privacy.html">Privacy</a></nav>
+  <div class="by-lang-switch"><button data-lang="id">ID</button><button data-lang="en">EN</button></div>
+</header>
+
+<main class="by-article">
+  <p class="by-breadcrumb"><a href="../index.html">Home</a> / <a href="index.html">Blog</a> / 10 Kesalahan Umum JSON</p>
+
+  <div class="by-lang-id">
+    <h1>10 Kesalahan Umum Saat Menulis JSON dan Cara Memperbaikinya</h1>
+    <p class="by-meta">Oleh Andi Putra Ogie · Update: Juni 2026 · 7 menit baca</p>
+
+    <ol>
+      <li><strong>Trailing comma.</strong> <code>{"a":1, "b":2,}</code> — koma setelah elemen terakhir tidak valid. Hapus koma sebelum kurung penutup.</li>
+      <li><strong>Single quote.</strong> <code>{'a': 1}</code> — JSON wajib pakai tanda kutip dua. Ganti semua <code>'</code> jadi <code>"</code>.</li>
+      <li><strong>Key tanpa kutip.</strong> <code>{a: 1}</code> — beda dengan object literal JavaScript, key JSON harus selalu diapit <code>"a"</code>.</li>
+      <li><strong>Comment di dalam JSON.</strong> <code>// catatan</code> — JSON murni tidak mendukung komentar sama sekali, hapus atau pindahkan ke dokumentasi terpisah.</li>
+      <li><strong>NaN, undefined, atau function.</strong> Nilai-nilai ini valid di JavaScript tapi tidak valid di JSON. Gunakan <code>null</code> sebagai gantinya.</li>
+      <li><strong>Encoding karakter spesial yang salah.</strong> Karakter seperti tab, newline, atau tanda kutip di dalam string harus di-escape: <code>\n</code>, <code>\t</code>, <code>\"</code>.</li>
+      <li><strong>Duplicate key.</strong> <code>{"a":1, "a":2}</code> — secara teknis bisa diparse oleh sebagian parser (akan ambil nilai terakhir), tapi sangat berisiko ambigu dan sebaiknya dihindari.</li>
+      <li><strong>Angka dengan leading zero.</strong> <code>0123</code> tidak valid sebagai number JSON. Kalau memang format seperti kode pos/kode area, simpan sebagai string: <code>"0123"</code>.</li>
+      <li><strong>Bracket/brace tidak seimbang.</strong> Kurang satu <code>}</code> atau <code>]</code> sering jadi penyebab error "Unexpected end of JSON input" — biasanya terjadi pada struktur sangat nested.</li>
+      <li><strong>BOM (Byte Order Mark) tersembunyi.</strong> File JSON yang disimpan dengan encoding tertentu kadang punya karakter BOM tak terlihat di awal file yang membuat parser gagal — simpan ulang sebagai UTF-8 tanpa BOM.</li>
+    </ol>
+
+    <div class="by-callout">💡 Daripada mencari error satu-satu secara manual, paste JSON kamu ke <a href="../index.html">JSONYAMify</a> — tool akan menunjukkan baris bermasalah secara otomatis sekaligus menawarkan auto-fix untuk kesalahan format yang umum.</div>
+
+    <a class="by-cta" href="../index.html">🔧 Validasi JSON Kamu Sekarang</a>
+
+    <div class="by-related">
+      <h2>Baca Juga</h2>
+      <ul>
+        <li><a href="apa-itu-json.html">Apa itu JSON?</a></li>
+        <li><a href="cara-format-json-online.html">Cara Format JSON Online</a></li>
+        <li><a href="json-schema-validation.html">Apa itu JSON Schema dan Cara Memvalidasinya</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="by-lang-en">
+    <h1>10 Common JSON Mistakes and How to Fix Them</h1>
+    <p class="by-meta">By Andi Putra Ogie · Updated: June 2026 · 7 min read</p>
+
+    <ol>
+      <li><strong>Trailing comma.</strong> <code>{"a":1, "b":2,}</code> — a comma after the last element is invalid. Remove it before the closing bracket.</li>
+      <li><strong>Single quotes.</strong> <code>{'a': 1}</code> — JSON requires double quotes. Replace every <code>'</code> with <code>"</code>.</li>
+      <li><strong>Unquoted keys.</strong> <code>{a: 1}</code> — unlike JavaScript object literals, JSON keys must always be wrapped in <code>"a"</code>.</li>
+      <li><strong>Comments inside JSON.</strong> <code>// note</code> — pure JSON has zero support for comments; remove them or move them to separate documentation.</li>
+      <li><strong>NaN, undefined, or functions.</strong> These are valid in JavaScript but invalid in JSON. Use <code>null</code> instead.</li>
+      <li><strong>Incorrect special character encoding.</strong> Characters like tabs, newlines, or quotes inside strings must be escaped: <code>\n</code>, <code>\t</code>, <code>\"</code>.</li>
+      <li><strong>Duplicate keys.</strong> <code>{"a":1, "a":2}</code> — technically some parsers accept this (keeping the last value), but it's highly ambiguous and should be avoided.</li>
+      <li><strong>Numbers with leading zeros.</strong> <code>0123</code> is not a valid JSON number. If it's a format like a zip/area code, store it as a string instead: <code>"0123"</code>.</li>
+      <li><strong>Unbalanced brackets/braces.</strong> A missing <code>}</code> or <code>]</code> is a common cause of "Unexpected end of JSON input" errors, especially in deeply nested structures.</li>
+      <li><strong>Hidden BOM (Byte Order Mark).</strong> JSON files saved with certain encodings can carry an invisible BOM character at the start that breaks parsers — re-save as UTF-8 without BOM.</li>
+    </ol>
+
+    <div class="by-callout">💡 Instead of hunting for errors manually, paste your JSON into <a href="../index.html">JSONYAMify</a> — it automatically points out the problem line and offers auto-fixes for common formatting mistakes.</div>
+
+    <a class="by-cta" href="../index.html">🔧 Validate Your JSON Now</a>
+
+    <div class="by-related">
+      <h2>Read Also</h2>
+      <ul>
+        <li><a href="apa-itu-json.html">What is JSON?</a></li>
+        <li><a href="cara-format-json-online.html">How to Format JSON Online</a></li>
+        <li><a href="json-schema-validation.html">What is JSON Schema and How to Validate With It</a></li>
+      </ul>
+    </div>
+  </div>
+</main>
+
+<footer><p>© 2026 — by <a href="https://andiogie.vercel.app/">Andi Putra Ogie</a> · <a href="../about.html">About</a> · <a href="../faq.html">FAQ</a> · <a href="../privacy.html">Privacy Policy</a></p></footer>
+</body>
+</html>
