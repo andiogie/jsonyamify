@@ -58,6 +58,7 @@ const T={
     'help-tip1':'Gunakan kolom pencarian di panel Fields untuk cepat menemukan key/value tertentu pada data besar.',
     'help-tip2':'Mode gelap tersedia lewat ikon bulan di kanan atas.',
     'help-close':'Tutup',
+    'donate-label':'Dukung Project Ini',
   },
   en:{
     'h-sub':'Format, edit & convert JSON/YAML right in your browser',
@@ -115,6 +116,7 @@ const T={
     'help-tip1':'Use the search box in the Fields panel to quickly find a specific key/value in large data.',
     'help-tip2':'Dark mode is available via the moon icon in the top right.',
     'help-close':'Close',
+    'donate-label':'Support This Project',
   }
 };
 function t(k){return T[lang][k]||k;}
@@ -149,6 +151,7 @@ function setLang(l){
   const bdt=document.getElementById('bulk-datetime');if(bdt)bdt.innerHTML='<i class="ti ti-clock"></i> '+t('bulk-datetime');
   const bn=document.getElementById('bulk-number');if(bn)bn.innerHTML=t('bulk-number');
   const bds=document.getElementById('bulk-dateseq');if(bds)bds.innerHTML='<i class="ti ti-calendar-stats"></i> '+t('bulk-dateseq');
+  const dl=document.getElementById('donateLabel');if(dl)dl.textContent=t('donate-label');
   if(data)renderFields();
 }
 
